@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-align"
+			],
+			[
+				"back",
+				"background-position"
+			],
+			[
+				"backgro",
+				"background-repeat"
+			],
+			[
+				"background-",
+				"background-image"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
 				"inlin",
 				"inline-block"
 			],
@@ -24,10 +44,28 @@
 	"buffers":
 	[
 		{
-			"file": "views/includes/header-bar.pug",
+			"file": "views/home.pug",
 			"settings":
 			{
-				"buffer_size": 208,
+				"buffer_size": 378,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/js/home.js",
+			"settings":
+			{
+				"buffer_size": 1165,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/shared/layout.pug",
+			"settings":
+			{
+				"buffer_size": 164,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -36,35 +74,7 @@
 			"file": "static/css/site.css",
 			"settings":
 			{
-				"buffer_size": 791,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "static/js/header-bar.js",
-			"settings":
-			{
-				"buffer_size": 424,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "$(window).on('scroll', function () {"
-			}
-		},
-		{
-			"file": "views/includes/head.pug",
-			"settings":
-			{
-				"buffer_size": 268,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "views/index.pug",
-			"settings":
-			{
-				"buffer_size": 162,
+				"buffer_size": 2935,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -112,12 +122,18 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Peter/Documents/Wedding.Website/static/js/header-bar.js",
 		"/C/Users/Peter/Documents/Wedding.Website/views/includes/head.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/views/shared/layout.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/app.js",
-		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/includes/header-bar.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/photos.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/info.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/app.js",
+		"/C/Users/Peter/Documents/Wedding.Website/static/css/site.css",
+		"/C/Users/Peter/Documents/Wedding.Website/views/shared/layout.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/static/js/layout.js",
+		"/C/Users/Peter/Documents/Wedding.Website/views/registry.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/home.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/index.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/includes/nav-bar.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/static/site.css",
@@ -175,6 +191,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"perfect-scrollbar",
+			"'",
 			"page-header",
 			"nav-bar"
 		],
@@ -184,6 +202,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"",
 			"header-bar",
 			"page-header"
 		],
@@ -196,109 +215,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "views/includes/header-bar.pug",
+					"file": "views/home.pug",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 208,
+						"buffer_size": 378,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								208,
-								208
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "static/css/site.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 791,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								243,
-								243
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "static/js/header-bar.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 424,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								275,
-								275
-							]
-						],
-						"settings":
-						{
-							"auto_name": "$(window).on('scroll', function () {",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/includes/head.pug",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 268,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								117,
-								117
+								365,
+								365
 							]
 						],
 						"settings":
@@ -313,20 +247,48 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/index.pug",
+					"buffer": 1,
+					"file": "static/js/home.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 162,
+						"buffer_size": 1165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								25,
-								25
+								1121,
+								1121
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/shared/layout.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								71,
+								44
 							]
 						],
 						"settings":
@@ -338,6 +300,35 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "static/css/site.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2935,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								369,
+								369
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -405,12 +396,12 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 412.0
 	},
 	"selected_group": 0,
 	"settings":

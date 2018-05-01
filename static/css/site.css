@@ -5,7 +5,32 @@ body {
 
 body * {
 	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
 	color: rgba(0, 0, 0, 0.87);
+}
+
+@media only screen and (max-height: 800px) {
+	body * {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-height: 400px) {
+	body * {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-height: 600px) {
+	body * {
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-height: 400px) {
+	body * {
+		font-size: 10px;
+	}
 }
 
 a {
@@ -14,13 +39,15 @@ a {
 	text-decoration: unset;
 }
 
+
+
 /* Header Bar Css */
 #header-bar {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	background: #03A9F4;
+	background: #FFFFFF;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	transition: top 150ms ease-in-out;
 	z-index: 10;
@@ -37,8 +64,8 @@ a {
 	margin: 0;
 	font-family: 'Rouge Script', cursive;
 	font-weight: 400;
-	font-size: 4em;
-	color: white;
+	font-size: 64px;
+	color: rgba(0, 0, 0, 0.87);
 }
 
 #header-bar .navigation {
@@ -59,20 +86,25 @@ a {
 	height: 48px;
 	line-height: 48px;
 	box-sizing: border-box;
+	cursor: pointer;
+	transition: color 150ms ease-in-out;
+}
+
+#header-bar ul li a {
 	text-transform: uppercase;
 	font-weight: 500;
-	color: rgba(255, 255, 255, 0.70);
-	cursor: pointer;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.87);
 }
 
 #header-bar ul li:hover {
-	color: white;
+	color: #00B0FF;
 }
 
 #header-bar ul li.selected {
 	cursor: default;
-	color: white;
-	border-bottom: 2px solid #1DE9B6;
+	color: #00B0FF;
+	border-bottom: 2px solid #00B0FF;
 }
 
 #content {
@@ -87,4 +119,67 @@ a {
 
 .full-width {
 	width: 100%;
+}
+
+#content .beach-background {
+	/* background-image: url('https://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'); */
+	background-image: url('/img/bg.jpg');
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	box-sizing: border-box;
+	text-align: center;
+	position: relative;
+}
+
+#content .beach-background * {
+	margin: 0;
+	padding: 0;
+	color: white;
+	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
+}
+
+#content .beach-background .text {
+	position: absolute;
+	top: 8%;
+	left: 0;
+	right: 0;
+}
+
+#content .beach-background .text h1 {
+	font-family: 'Rouge Script', cursive;
+	font-weight: 400;
+	font-size: 6em;
+	padding-bottom: 12px;
+}
+
+#content .beach-background .text h2 {
+	font-weight: 500;
+	font-size: 1.8em;
+}
+
+#content .beach-background .text h3 {
+	font-weight: 400;
+	font-size: 1.8em;
+}
+
+#content .beach-background .countdown {
+	position: absolute;
+	bottom: 8%;
+	left: 0;
+	right: 0;
+}
+
+#content .beach-background .countdown table {
+	display: inline-block;
+}
+
+#content .beach-background .countdown td {
+	font-weight: 400;
+	font-size: 2.5em;
+	text-align: center;
+	width: 3.8em;
+}
+
+#content .beach-background .countdown * {
 }

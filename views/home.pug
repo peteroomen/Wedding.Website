@@ -1,3 +1,22 @@
 extends shared/layout.pug
+block head
+	script(src='/js/home.js')
+
 block content
-	img(class='full-width' src='https://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg')
+	div(class='beach-background')
+		div(class='text')
+			h1 Megan & Peter
+			h2 February 27, 2019
+			h3 Papamoa Beach
+		div(class='countdown')
+			table
+				tr 
+					td(id='days')
+					td(id='hours')
+					td(id='minutes')
+					td(id='seconds')
+				tr
+					td Days
+					td Hours
+					td Mins
+					td Secs

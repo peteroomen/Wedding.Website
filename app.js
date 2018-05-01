@@ -24,6 +24,7 @@ app.set('view engine', 'pug');
 
 // Setup the static files
 app.use(express.static('static'));
+app.use('/libs/perfect-scrollbar', express.static('node_modules/perfect-scrollbar/'));
 
 // Setup routes
 app.get('/', (req, res) => {
