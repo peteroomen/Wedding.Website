@@ -39,6 +39,11 @@ a {
 	text-decoration: unset;
 }
 
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	padding: 0;
+}
+
 
 
 /* Header Bar Css */
@@ -47,8 +52,7 @@ a {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: #FFFFFF;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	background: #ffcc80;
 	transition: top 150ms ease-in-out;
 	z-index: 10;
 }
@@ -66,6 +70,7 @@ a {
 	font-weight: 400;
 	font-size: 64px;
 	color: rgba(0, 0, 0, 0.87);
+    line-height: inherit;
 }
 
 #header-bar .navigation {
@@ -98,13 +103,13 @@ a {
 }
 
 #header-bar ul li:hover {
-	color: #00B0FF;
+	color: #00b0ff;
 }
 
 #header-bar ul li.selected {
 	cursor: default;
-	color: #00B0FF;
-	border-bottom: 2px solid #00B0FF;
+	color: #00b0ff;
+	border-bottom: 2px solid #00b0ff;
 }
 
 #content {
@@ -121,11 +126,13 @@ a {
 	width: 100%;
 }
 
-#content .beach-background {
-	/* background-image: url('https://www.publicdomainpictures.net/pictures/150000/velka/tropical-beach-1454007190ZAK.jpg'); */
+.beach-background {
 	background-image: url('/img/bg.jpg');
 	background-size: cover;
 	background-position: center;
+}
+
+#content .beach-background {
 	height: 100%;
 	box-sizing: border-box;
 	text-align: center;
@@ -151,16 +158,19 @@ a {
 	font-weight: 400;
 	font-size: 6em;
 	padding-bottom: 12px;
+	line-height: inherit;
 }
 
 #content .beach-background .text h2 {
 	font-weight: 500;
 	font-size: 1.8em;
+	line-height: inherit;
 }
 
 #content .beach-background .text h3 {
 	font-weight: 400;
 	font-size: 1.8em;
+	line-height: inherit;
 }
 
 #content .beach-background .countdown {
@@ -172,6 +182,7 @@ a {
 
 #content .beach-background .countdown table {
 	display: inline-block;
+	width: unset;
 }
 
 #content .beach-background .countdown td {
@@ -181,5 +192,42 @@ a {
 	width: 3.8em;
 }
 
-#content .beach-background .countdown * {
+#login-content .beach-background {
+	height: 100%;
+}
+
+#login-content .beach-background .card {
+	width: 20%;
+	display: inline-block;
+}
+
+#login-content .beach-background h1 {
+	color: white;
+	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
+	margin: 0;
+	padding: 2.8% 0;
+}
+
+#login-content .beach-background h1 {
+	font-family: 'Rouge Script', cursive;
+	font-weight: 400;
+	font-size: 6em;
+}
+
+
+/* Input colors */
+/* label focus color */
+.input-field input[type=text]:focus + label {
+	color: #00b0ff !important;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #00b0ff !important;
+	box-shadow: 0 1px 0 0 #00b0ff !important;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+	color: #00b0ff !important;
 }

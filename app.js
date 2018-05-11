@@ -24,7 +24,8 @@ app.set('view engine', 'pug');
 
 // Setup the static files
 app.use(express.static('static'));
-app.use('/libs/perfect-scrollbar', express.static('node_modules/perfect-scrollbar/'));
+app.use('/libs/perfect-scrollbar', express.static('node_modules/perfect-scrollbar'));
+app.use('/libs/materialize-css', express.static('node_modules/materialize-css/dist'));
 
 // Setup routes
 app.get('/', (req, res) => {
@@ -46,6 +47,10 @@ app.get('/registry', (req, res) => {
 
 app.get('/photos', (req, res) => {
 	res.render('photos', { page: 'photos' });
+});
+
+app.get('/login', (req, res) => {
+	res.render('login', { page: 'login' });
 });
 
 // Start the server

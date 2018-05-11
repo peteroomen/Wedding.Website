@@ -1,20 +1,21 @@
 extends shared/layout.pug
 block head
-	script(src='/js/home.js')
+	script(src="/js/home.js")
+	link(rel="stylesheet" href="/css/home.css")
 
 block content
-	div(class='beach-background')
-		div(class='text')
+	div(class="beach-background")
+		div(class="text")
 			h1 Megan & Peter
-			h2 February 27, 2019
-			h3 Papamoa Beach
-		div(class='countdown')
+			h2 January 27, 2019
+			h3 Tauranga
+		div(class="countdown")
 			table
 				tr 
-					td(id='days')
-					td(id='hours')
-					td(id='minutes')
-					td(id='seconds')
+					td(id="days")
+					td(id="hours")
+					td(id="minutes")
+					td(id="seconds")
 				tr
 					td Days
 					td Hours
