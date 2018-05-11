@@ -214,6 +214,14 @@ h1, h2, h3, h4, h5 {
 	font-size: 6em;
 }
 
+.map-container {
+	width: 100%;
+}
+.map-container .map {
+	width: 64em;
+	height: 40em;
+	display: inline-block;
+}
 
 /* Input colors */
 /* label focus color */

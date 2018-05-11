@@ -1,3 +1,19 @@
 extends shared/layout.pug
+block head
+	script(src="/js/info.js")
+
 block content
-	h3 Information
+	div(class="container") 
+		div(class="section")
+			h5 Ceremony
+			p The ceremony will be held at Mount Manganui Beach, by the corner of Marine Parade and Hart Street.
+			div(class="map-container center-align")
+				div(id="ceremony-map" class="map")
+
+			h5 Reception
+			p The reception will be held at Bluebiyou, at the Papamoa Domain.
+			div(class="map-container center-align")
+				div(id="reception-map" class="map")
+
+
+	script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIRAY8Fe4kzQIEtNabVpErxWBXwy5uTAs&callback=initMaps")
