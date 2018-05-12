@@ -1,241 +1,238 @@
 body {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body * {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	color: rgba(0, 0, 0, 0.87);
-}
-
-@media only screen and (max-height: 800px) {
-	body * {
-		font-size: 14px;
-	}
-}
-
-@media only screen and (max-height: 400px) {
-	body * {
-		font-size: 12px;
-	}
-}
-
-@media only screen and (max-height: 600px) {
-	body * {
-		font-size: 11px;
-	}
-}
-
-@media only screen and (max-height: 400px) {
-	body * {
-		font-size: 10px;
-	}
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 a {
-	color: unset;
-	cursor: unset;
-	text-decoration: unset;
+  color: unset;
+  cursor: unset;
+  text-decoration: unset;
 }
 
 h1, h2, h3, h4, h5 {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.bold {
+  font-weight: 500;
 }
 
 
 
 /* Header Bar Css */
 #header-bar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background: #ffcc80;
-	transition: top 150ms ease-in-out;
-	z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffcc80;
+  transition: top 150ms ease-in-out;
+  z-index: 10;
 }
 
 #header-bar .logo-bar {
-	height: 108px;
-	line-height: 108px;
-	text-align: center;
+  height: 108px;
+  line-height: 108px;
+  text-align: center;
 }
 
 #header-bar .logo-bar h1 {
-	padding: 0;
-	margin: 0;
-	font-family: 'Rouge Script', cursive;
-	font-weight: 400;
-	font-size: 64px;
-	color: rgba(0, 0, 0, 0.87);
+  padding: 0;
+  margin: 0;
+  font-family: 'Rouge Script', cursive;
+  font-weight: 400;
+  font-size: 64px;
+  color: rgba(0, 0, 0, 0.87);
     line-height: inherit;
 }
 
 #header-bar .navigation {
-	height: 48px;
-	line-height: 48px;
+  height: 48px;
+  line-height: 48px;
 }
 
 #header-bar .navigation ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 #header-bar ul li {
-	display: inline-block;
-	padding: 0 12px;
-	height: 48px;
-	line-height: 48px;
-	box-sizing: border-box;
-	cursor: pointer;
-	transition: color 150ms ease-in-out;
+  display: inline-block;
+  padding: 0 12px;
+  height: 48px;
+  line-height: 48px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: color 150ms ease-in-out;
 }
 
 #header-bar ul li a {
-	text-transform: uppercase;
-	font-weight: 500;
-	font-size: 16px;
-	color: rgba(0, 0, 0, 0.87);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 #header-bar ul li:hover {
-	color: #00b0ff;
+  color: #00b0ff;
 }
 
 #header-bar ul li.selected {
-	cursor: default;
-	color: #00b0ff;
-	border-bottom: 2px solid #00b0ff;
+  cursor: default;
+  color: #00b0ff;
+  border-bottom: 2px solid #00b0ff;
 }
 
 #content {
-	position: fixed;
-	top: 156px;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	transition: top 150ms ease-in-out;
-	overflow: auto;
+  position: fixed;
+  top: 156px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: top 150ms ease-in-out;
+  overflow: auto;
 }
 
 .full-width {
-	width: 100%;
+  width: 100%;
 }
 
 .beach-background {
-	background-image: url('/img/bg.jpg');
-	background-size: cover;
-	background-position: center;
+  background-image: url('/img/bg.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 #content .beach-background {
-	height: 100%;
-	box-sizing: border-box;
-	text-align: center;
-	position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
 }
 
 #content .beach-background * {
-	margin: 0;
-	padding: 0;
-	color: white;
-	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
+  margin: 0;
+  padding: 0;
+  color: white;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
 }
 
 #content .beach-background .text {
-	position: absolute;
-	top: 8%;
-	left: 0;
-	right: 0;
+  position: absolute;
+  top: 8%;
+  left: 0;
+  right: 0;
 }
 
 #content .beach-background .text h1 {
-	font-family: 'Rouge Script', cursive;
-	font-weight: 400;
-	font-size: 6em;
-	padding-bottom: 12px;
-	line-height: inherit;
+  font-family: 'Rouge Script', cursive;
+  font-weight: 400;
+  font-size: 6em;
+  padding-bottom: 12px;
+  line-height: inherit;
 }
 
 #content .beach-background .text h2 {
-	font-weight: 500;
-	font-size: 1.8em;
-	line-height: inherit;
+  font-weight: 500;
+  font-size: 1.8em;
+  line-height: inherit;
 }
 
 #content .beach-background .text h3 {
-	font-weight: 400;
-	font-size: 1.8em;
-	line-height: inherit;
+  font-weight: 400;
+  font-size: 1.8em;
+  line-height: inherit;
 }
 
 #content .beach-background .countdown {
-	position: absolute;
-	bottom: 8%;
-	left: 0;
-	right: 0;
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
 }
 
 #content .beach-background .countdown table {
-	display: inline-block;
-	width: unset;
+  display: inline-block;
+  width: unset;
 }
 
 #content .beach-background .countdown td {
-	font-weight: 400;
-	font-size: 2.5em;
-	text-align: center;
-	width: 3.8em;
+  font-weight: 400;
+  font-size: 2.5em;
+  text-align: center;
+  width: 3.8em;
 }
 
 #login-content .beach-background {
-	height: 100%;
+  height: 100%;
 }
 
 #login-content .beach-background .card {
-	width: 20%;
-	display: inline-block;
+  width: 20%;
+  display: inline-block;
 }
 
 #login-content .beach-background h1 {
-	color: white;
-	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
-	margin: 0;
-	padding: 2.8% 0;
+  color: white;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
+  margin: 0;
+  padding: 2.8% 0;
 }
 
 #login-content .beach-background h1 {
-	font-family: 'Rouge Script', cursive;
-	font-weight: 400;
-	font-size: 6em;
+  font-family: 'Rouge Script', cursive;
+  font-weight: 400;
+  font-size: 6em;
 }
 
 .map-container {
-	width: 100%;
+  width: 100%;
 }
+
 .map-container .map {
-	width: 64em;
-	height: 40em;
-	display: inline-block;
+  width: 42em;
+  height: 28em;
+  display: inline-block;
 }
+
+#info-content table {
+  width: unset;
+  margin-left: 8px;
+}
+
+#info-content table tr {
+  border-bottom: none;
+}
+
+#info-content table tr td {
+  padding: 8px;
+  vertical-align: text-top;
+}
+
+
 
 /* Input colors */
 /* label focus color */
 .input-field input[type=text]:focus + label {
-	color: #00b0ff !important;
+  color: #00b0ff !important;
 }
 
 /* label underline focus color */
 .input-field input[type=text]:focus {
-	border-bottom: 1px solid #00b0ff !important;
-	box-shadow: 0 1px 0 0 #00b0ff !important;
+  border-bottom: 1px solid #00b0ff !important;
+  box-shadow: 0 1px 0 0 #00b0ff !important;
 }
 
 /* icon prefix focus color */
 .input-field .prefix.active {
-	color: #00b0ff !important;
+  color: #00b0ff !important;
 }

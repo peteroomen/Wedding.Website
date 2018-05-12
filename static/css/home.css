@@ -1,3 +1,27 @@
 #header-bar {
-	background-color: white;
+  background-color: white;
+}
+
+@media only screen and (max-height: 800px) {
+  body * {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  body * {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  body * {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  body * {
+    font-size: 10px;
+  }
 }

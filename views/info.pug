@@ -1,19 +1,45 @@
 extends shared/layout.pug
 block head
-	script(src="/js/info.js")
+  script(src="/js/info.js")
 
 block content
-	div(class="container") 
-		div(class="section")
-			h5 Ceremony
-			p The ceremony will be held at Mount Manganui Beach, by the corner of Marine Parade and Hart Street.
-			div(class="map-container center-align")
-				div(id="ceremony-map" class="map")
+  div(id="info-content" class="container") 
+    div(class="section")
+      br
+      h4 Ceremony
+      p. 
+        The ceremony will be held at Mount Manganui Beach, 
+        by the corner of Marine Parade and Hart Street. 
+        The ceremony will begin at around 2:30 PM, 
+        so please arrive at or just before that time.
+      table(class="info")
+        tr
+          td(class="bold") Address:
+          td Hart Street Boardwalk <br> Corner of Marine Parade and Hart Street <br> Papamoa
+        tr
+          td(class="bold") Time:
+          td 2:30 PM
+      br
+      div(class="map-container center-align")
+        div(id="ceremony-map" class="map")
+      br
+      br
 
-			h5 Reception
-			p The reception will be held at Bluebiyou, at the Papamoa Domain.
-			div(class="map-container center-align")
-				div(id="reception-map" class="map")
-
-
-	script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIRAY8Fe4kzQIEtNabVpErxWBXwy5uTAs&callback=initMaps")
+      h4 Reception
+      p.
+        The reception will be held at Bluebiyou, at the Papamoa Domain.
+        Feel free to make you way to the reception at any point after the ceremony.
+      table(class="info")
+        tr
+          td(class="bold") Address:
+          td BlueBiyou <br> 559 Papamoa Beach Road <br> Papamoa
+        tr
+          td(class="bold") Time:
+          td 1:30 PM
+      br
+      div(class="map-container center-align")
+        div(id="reception-map" class="map")
+      br
+      br
+        
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIRAY8Fe4kzQIEtNabVpErxWBXwy5uTAs&callback=initMaps")
