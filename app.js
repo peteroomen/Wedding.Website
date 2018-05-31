@@ -22,41 +22,97 @@ const app = express();
 // Set the view engine and configure
 app.set('view engine', 'pug');
 
+// Allow url encoded post data
+app.use(express.urlencoded());
+
 // Setup the static files
 app.use(express.static('static'));
 app.use('/libs/perfect-scrollbar', express.static('node_modules/perfect-scrollbar'));
 app.use('/libs/materialize-css', express.static('node_modules/materialize-css/dist'));
 
+// Setup the database
+const database = require('./database.js');
+database.init();
+
+// Setup authentication
+const authentication = require('./authentication.js');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 // Setup routes
 app.get('/', (req, res) => {
-	res.render('home', { page: 'home' });
+  authentication.requireAuth(req, res, () => {
+  res.render('home', { page: 'home' });
+  });
 });
 
 // Setup routes
 app.get('/info', (req, res) => {
-	res.render('info', { page: 'info' });
+  authentication.requireAuth(req, res, () => {
+  res.render('info', { page: 'info' });
+  });
 });
 
 app.get('/rsvp', (req, res) => {
-	res.render('rsvp', { page: 'rsvp' });
+  authentication.requireAuth(req, res, () => {
+  res.render('rsvp', { page: 'rsvp' });
+  });
 });
 
 app.get('/registry', (req, res) => {
-	res.render('registry', { page: 'registry' });
+  authentication.requireAuth(req, res, () => {
+  res.render('registry', { page: 'registry' });
+  });
 });
 
 app.get('/photos', (req, res) => {
-	res.render('photos', { page: 'photos' });
+  authentication.requireAuth(req, res, () => {
+  res.render('photos', { page: 'photos' });
+  });
 });
 
 app.get('/login', (req, res) => {
-	res.render('login', { page: 'login' });
+  res.render('login', { page: 'login', redirect: req.query.redirect });
 });
+
+app.post('/login', (req, res) => {
+  var username = req.body.username;
+  var password = req.body.password;
+  var redirect = req.body.redirect;
+  console.log('Logging in', username, password);
+  database.authenticateUser(username, password).then((user) => {
+    if (user.isAuthenticated) {
+      var token = authentication.issueToken(req, res, user, redirect);
+    } else {
+      res.sendStatus(403);
+    }
+  });
+});
+
+app.get('/logout', (req, res) => {
+  authentication.clearToken(req, res);
+  res.redirect('/login');
+});
+
+app.get('/admin', (req, res) => {
+  authentication.requireAdmin(req, res, () => {
+    res.render('admin/overview', { page: 'overview' });
+  });
+});
+
+app.get('/admin/users', (req, res) => {
+  authentication.requireAdmin(req, res, () => {
+    database.listUsers().then((users) => {
+      res.render('admin/users', { page: 'users', users: users });
+    });
+  });
+});
+
 
 // Start the server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-	console.log(`App listening on port ${PORT}`);
-	console.log('Press Ctrl+C to quit.');
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
 });
 // [END app]

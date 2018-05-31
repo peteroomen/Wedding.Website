@@ -12,14 +12,16 @@ html
 						span(class="card-title") Authentication
 						p Enter the details from your wedding invitation
 						br
-						div(class="input-field")
-							input(id="code" type="text")
-							label(for="code") Code
-						div(class="input-field")
-							input(id="password" type="text")
-							label(for="password") Password
-						br
-						div(class="right-align")
-							a(class="waves-effect waves-light btn right-align light-blue accent-3") Login
+						form(action="/login" method="post")
+							div(class="input-field")
+								input(id="username" name="username" type="text")
+								label(for="username") Code
+							div(class="input-field")
+								input(id="password" name="password" type="password")
+								label(for="password") Password
+							input(id="redirect" name="redirect" type="hidden" value=redirect)
+							br
+							div(class="right-align")
+								button(type="submit" class="waves-effect waves-light btn right-align light-blue accent-3") Login
 
 

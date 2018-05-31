@@ -6,7 +6,11 @@ body {
 body * {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+dark-text {
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
 a {
@@ -24,7 +28,15 @@ h1, h2, h3, h4, h5 {
   font-weight: 500;
 }
 
+.small-margin-left {
+  margin-left: 6px;
+}
 
+.btn-floating.fab {
+  position: fixed;
+  right: 36px;
+  bottom: 36px;
+}
 
 /* Header Bar Css */
 #header-bar {
@@ -77,8 +89,8 @@ h1, h2, h3, h4, h5 {
 
 #header-bar ul li a {
   text-transform: uppercase;
-  font-weight: 500;
   font-size: 16px;
+  font-weight: 500;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -100,6 +112,10 @@ h1, h2, h3, h4, h5 {
   right: 0;
   transition: top 150ms ease-in-out;
   overflow: auto;
+}
+
+#content.admin {
+  top: 48px;
 }
 
 .full-width {
