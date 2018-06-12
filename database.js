@@ -102,7 +102,6 @@ init = function () {
 }
 
 /* Users */
-
 listUsers = function () {
   return User.findAll({
     include: [
@@ -111,8 +110,15 @@ listUsers = function () {
   });
 }
 
-listGuests = function () {
-  return Guest.findAll();
+getUser = function (id) {
+  return User.findOne({
+    where: {
+      id: id
+    }, 
+    include: [
+      { model: Guest, as: 'guests' }
+    ]
+  });
 }
 
 getUserByUsername = function (username) {
@@ -121,6 +127,10 @@ getUserByUsername = function (username) {
       username: username
     }
   });
+}
+
+listGuests = function () {
+  return Guest.findAll();
 }
 
 authenticateUser = function (username, password) {
@@ -151,5 +161,6 @@ module.exports = {
   users: User,
   authenticateUser: authenticateUser,
   listUsers: listUsers,
+  getUser: getUser,
   listGuests: listGuests
 }

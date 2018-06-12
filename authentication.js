@@ -12,7 +12,7 @@ self.requireAuth = function (req, res, success) {
       	self.loginRedirect(req, res);
       } else {
         req.userData = tokenData;
-        success();
+        success(req.userData);
       }
     });
   } else {

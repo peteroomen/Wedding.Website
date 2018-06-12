@@ -13,5 +13,9 @@ div(id="header-bar" class="z-depth-3")
 				a(href="/registry") Gift Registry
 			li(class=page === "photos" ? "selected" : "")
 				a(href="/photos") Photos
+			if currentUser.isAdmin
+				li(class=page === "admin" ? "selected" : "")
+					a(href="/admin") Admin &nbsp
+					i(class="material-icons dark-text") open_in_new
 			li
 				a(href="/logout") Logout

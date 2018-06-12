@@ -41,33 +41,33 @@ app.use(cookieParser());
 
 // Setup routes
 app.get('/', (req, res) => {
-  authentication.requireAuth(req, res, () => {
-  res.render('home', { page: 'home' });
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('home', { page: 'home', currentUser: currentUser });
   });
 });
 
 // Setup routes
 app.get('/info', (req, res) => {
-  authentication.requireAuth(req, res, () => {
-  res.render('info', { page: 'info' });
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('info', { page: 'info', currentUser: currentUser  });
   });
 });
 
 app.get('/rsvp', (req, res) => {
-  authentication.requireAuth(req, res, () => {
-  res.render('rsvp', { page: 'rsvp' });
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('rsvp', { page: 'rsvp', currentUser: currentUser });
   });
 });
 
 app.get('/registry', (req, res) => {
-  authentication.requireAuth(req, res, () => {
-  res.render('registry', { page: 'registry' });
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('registry', { page: 'registry', currentUser: currentUser  });
   });
 });
 
 app.get('/photos', (req, res) => {
-  authentication.requireAuth(req, res, () => {
-  res.render('photos', { page: 'photos' });
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('photos', { page: 'photos', currentUser: currentUser  });
   });
 });
 
@@ -95,15 +95,30 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  authentication.requireAdmin(req, res, () => {
-    res.render('admin/overview', { page: 'overview' });
+  authentication.requireAdmin(req, res, (currentUser) => {
+    res.render('admin/overview', { page: 'overview', currentUser: currentUser  });
   });
 });
 
 app.get('/admin/users', (req, res) => {
-  authentication.requireAdmin(req, res, () => {
+  authentication.requireAdmin(req, res, (currentUser) => {
     database.listUsers().then((users) => {
-      res.render('admin/users', { page: 'users', users: users });
+      res.render('admin/users', { page: 'users', currentUser: currentUser, users: users });
+    });
+  });
+});
+
+app.get('/admin/users/add', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+      res.render('admin/user', { page: 'user', currentUser: currentUser, user: { guests: [] } });
+  });
+});
+
+app.get('/admin/users/:id', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var id = req.params.id;
+    database.getUser(id).then((user) => {
+      res.render('admin/user', { page: 'user', currentUser: currentUser, user: user });
     });
   });
 });

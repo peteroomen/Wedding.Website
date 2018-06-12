@@ -19,7 +19,7 @@ block content
           td= user.guests.length > 0 ? user.guests.map((guest) => guest.firstName + ' ' + guest.lastName).join(', ') : 'This user has no guests'
           td= user.isAdmin ? 'Yes' : 'No'
           td
-            a(href="users/delete/" + user.id + "/delete" class="btn-flat waves-effect btn-floating right small-margin-left")
+            a(href="users/" + user.id + "/delete" class="btn-flat waves-effect btn-floating right small-margin-left")
               i(class="material-icons dark-text") delete
             a(href="users/" + user.id  class="btn-flat waves-effect btn-floating right small-margin-left")
               i(class="material-icons dark-text") edit
