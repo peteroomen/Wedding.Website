@@ -6,40 +6,108 @@ block content
     br
     h4 #{user.id ? "Edit User" : "Add User"}
     br
-    form(method="post")
+    form(method="post" action="/admin/users/save")
       div(class="row")
-        div(class="input-field col s10")
+        div(class="input-field col s9")
           input(name="username" type="text" value=user.username)
           label Username
-        div(class="input-field col s2")
+        div(class="input-field col s3")
           label
             input(id="admin" name="isAdmin" class="filled-in" type="checkbox" checked=user.isAdmin)
             span Is Admin
-      div(class="section")
+      div#user-list(class="section ")
         h5 Guests
         each guest, i in user.guests
-          div(class="row")
+          div(id="guests[" + i + "]" class="row")
             div(class="input-field col s3")
-              input(name="firstName[" + i + "]" type="text" value=guest.firstName)
+              input(name="guests[" + i + "][firstName]" type="text" value=guest.firstName)
               label First Name
             div(class="row input-field col s3")
-              input(name="lastName[" + i + "]" type="text" value=guest.lastName)
+              input(name="guests[" + i + "][lastName]" type="text" value=guest.lastName)
               label Last Name
-            div(class="row input-field col s4")
-              input(name="dietaryRequirements[" + i + "]" type="text" value=guest.dietaryRequirements)
+            div(class="row input-field col s3")
+              input(name="guests[" + i + "][dietaryRequirements]" type="text" value=guest.dietaryRequirements)
               label Dietary Requirements
             div(class="row input-field col s2")
               label
-                input(id="admin" name="isAttending[" + i + "]" class="filled-in" type="checkbox" checked=user.isAttending)
+                input(name="guests[" + i + "][isAttending]" class="filled-in" type="checkbox" checked=guest.isAttending)
                 span Is Attending
+            div(class="row input-field col s1")
+              a(href="javascript:void(0)" onclick="removeGuest(" + i + ")" class="btn-flat waves-effect btn-floating right small-margin-left")
+                i(class="material-icons dark-text") delete
 
-        if user.guests.length <= 0
-          p This user has no guests
+      div#no-guests(class="row" style="display: " + user.guests.length <= 0 ? 'block' : 'none')
+        p This user has no guests
+
+      input(name="id" type="hidden" value=user.id)
 
       div(class="row")
         div(class="col s6 left-align no-padding")
-          a(href="javascript:void(0)" class="waves-effect waves-light btn white dark-text") Add Guest
+          a(href="javascript:void(0)" onclick="addGuest()" class="waves-effect waves-light btn white dark-text") Add Guest
         div(class="col s6 right-align no-padding")
           button(type="submit" class="waves-effect waves-light btn light-blue accent-3") Save
           a(href="/admin/users" class="waves-effect waves-light btn white dark-text small-margin-left") Cancel
 
+
+  div#user-template(class="row" style="display: none")
+    div(class="input-field col s3")
+      input(class="first-name" type="text")
+      label First Name
+    div(class="row input-field col s3")
+      input(class="last-name" type="text")
+      label Last Name
+    div(class="row input-field col s3")
+      input(class="dietary-requirements" type="text")
+      label Dietary Requirements
+    div(class="row input-field col s2")
+      label
+        input(class="is-attending filled-in" type="checkbox")
+        span Is Attending
+    div(class="row input-field col s1")
+      a(href="javascript:void(0)" class="btn-flat waves-effect btn-floating right small-margin-left remove-icon")
+        i(class="material-icons dark-text") delete
+
+  script.
+    var guestCount = #{user.guests.length};
+    var guestIndex = guestCount;
+
+    var addGuest = function () {
+      var i = guestIndex;
+
+      // Create the new elements
+      var template = document.getElementById('user-template').innerHTML;
+      var row = document.createElement('div');
+      row.classList.add('row');
+      row.id = 'guests[' + i + ']';
+      row.innerHTML = template;
+      row.getElementsByClassName('first-name')[0].setAttribute('name', 'guests[' + i + '][firstName]');
+      row.getElementsByClassName('last-name')[0].setAttribute('name', 'guests[' + i + '][lastName]');
+      row.getElementsByClassName('dietary-requirements')[0].setAttribute('name', 'guests[' + i + '][dietaryRequirements]');
+      row.getElementsByClassName('is-attending')[0].setAttribute('name', 'guests[' + i + '][isAttending]');
+      row.getElementsByClassName('remove-icon')[0].setAttribute('onclick', 'removeGuest(' + i + ')');
+      console.log(row);
+      document.getElementById('user-list').appendChild(row);
+      
+      // Remove the 'no guest' text
+      if (guestCount <= 0) document.getElementById('no-guests').style.display = 'none';
+
+      // Increment the guest index and count
+      guestIndex++;
+      guestCount++;
+
+      // Scroll the list by the height of the droweted elements
+      var scrollAmount = row.clientHeight + 20;
+      document.getElementById('content').scrollBy(0, scrollAmount);
+    };
+
+    var removeGuest = function (i) {
+      var row = document.getElementById('guests[' + i + ']')
+
+      // Scroll the list by the height of the deleted element
+      var scrollAmount = row.clientHeight + 20;
+      document.getElementById('content').scrollBy(0, -scrollAmount);
+      
+      row.remove();
+      guestCount--;
+      if (guestCount <= 0) document.getElementById('no-guests').style.display = 'block';
+    };

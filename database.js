@@ -17,7 +17,9 @@ sequelize = new Sequelize('live', 'root', '9kroMKNyinFykqnd', {
 /* MODELS */
 User = sequelize.define('user', {
   username: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   },
   passwordHash: {
     type: Sequelize.STRING
@@ -45,7 +47,7 @@ Guest = sequelize.define('guest', {
   }
 });
 
-User.hasMany(Guest, { as: 'guests' });
+User.hasMany(Guest, { as: 'guests', onDelete: 'CASCADE' });
 
 /* METHODS */
 
@@ -60,43 +62,26 @@ init = function () {
     });
 
   // force: true will drop the table if it already exists
-  sequelize.sync({force: true}).then(() => {
+  sequelize.sync().then(() => {
+    // Check if the admin user exists
+
     // Create admin user
-    var salt = generateSalt();
-    var password = 'rubyrose20';
-    var passwordHash = sha512(password, salt);
+    var username = 'admin';
 
-    User.create({
-      username: 'admin',
-      passwordHash: passwordHash,
-      salt: salt,
-      isAdmin: true
-    });
+    return getUserByUsername(username).then((user) => {
+      console.log(user);
+      if (!user) {
+        var salt = generateSalt();
+        var password = 'rubyrose20';
+        var passwordHash = sha512(password, salt);
 
-    // Create test user
-    salt = generateSalt();
-    passwordHash = sha512(password, salt);
-
-    User.create({
-      username: 'test',
-      passwordHash: passwordHash,
-      salt: salt,
-      isAdmin: false
-    }).then((user) => {
-      Guest.create({
-        firstName: "John",
-        lastName: "Smith",
-        isAttending: true,
-        dietaryRequirements: 'Vegan',
-        userId: user.id
-      });
-
-      Guest.create({
-        firstName: "Lucy",
-        lastName: "Smith",
-        isAttending: false,
-        userId: user.id
-      });
+        return User.create({
+          username: 'admin',
+          passwordHash: passwordHash,
+          salt: salt,
+          isAdmin: true
+        });
+      }
     });
   });
 }
@@ -129,8 +114,40 @@ getUserByUsername = function (username) {
   });
 }
 
-listGuests = function () {
-  return Guest.findAll();
+addOrUpdateUser = function (user) {
+  if (!user.id) {
+    // Add a new user
+    return User.create(user).then((dbUser) => {
+      return Guest.bulkCreate(user.guests).then((guests) => {
+        return dbUser.setGuests(guests);
+      });
+    });
+  } else {
+    return User.findOne({
+      where: {
+        id: user.id
+      }
+    }).then((dbUser) => {
+      return dbUser.update(user).then((dbUser) => {
+        return Guest.bulkCreate(user.guests).then((guests) => {
+          return dbUser.setGuests(guests);
+        });
+      });
+    });
+  }
+}
+
+deleteUser = function (id) {
+  return User.findOne({
+    where: {
+      id: id
+    }, 
+    include: [
+      { model: Guest, as: 'guests' }
+    ]
+  }).then((user) => {
+    return user.destroy();
+  });
 }
 
 authenticateUser = function (username, password) {
@@ -162,5 +179,6 @@ module.exports = {
   authenticateUser: authenticateUser,
   listUsers: listUsers,
   getUser: getUser,
-  listGuests: listGuests
+  deleteUser: deleteUser,
+  addOrUpdateUser: addOrUpdateUser
 }

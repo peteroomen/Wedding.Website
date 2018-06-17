@@ -114,11 +114,50 @@ app.get('/admin/users/add', (req, res) => {
   });
 });
 
+app.post('/admin/users/save', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var user = {
+      id: req.body.id,
+      username: req.body.username,
+      isAdmin: req.body.isAdmin != undefined,
+      guests: (req.body.guests || []).map((guest) => {
+        return {
+          firstName: guest.firstName,
+          lastName: guest.lastName,
+          dietaryRequirements: guest.dietaryRequirements,
+          isAttending: guest.isAttending != undefined
+        };
+      })
+    };
+    database.addOrUpdateUser(user).then((user) => {
+      res.redirect('/admin/users');
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/users');
+    });
+  });
+});
+
 app.get('/admin/users/:id', (req, res) => {
   authentication.requireAdmin(req, res, (currentUser) => {
     var id = req.params.id;
     database.getUser(id).then((user) => {
       res.render('admin/user', { page: 'user', currentUser: currentUser, user: user });
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/users');
+    });
+  });
+});
+
+app.get('/admin/users/:id/delete', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var id = req.params.id;
+    database.deleteUser(id).then((user) => {
+      res.redirect('/admin/users');
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/users');
     });
   });
 });
