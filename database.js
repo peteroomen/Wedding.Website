@@ -2,8 +2,8 @@ const self = this;
 const Sequelize = require('sequelize');
 const Crypto = require('crypto');
 
-sequelize = new Sequelize('live', 'root', '9kroMKNyinFykqnd', {
-  host: '35.201.3.29',
+sequelize = new Sequelize('live', 'wedding', 'Alldayeveryday123', {
+  host: 'localhost',
   operatorAliases: false,
   dialect: 'mysql',
   pool: {
