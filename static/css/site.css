@@ -272,3 +272,11 @@ input[type=text]:focus {
   color: #00b0ff !important;
 }
 
+/* button colour */
+.btn-floating:hover {
+  background-color: #00b0ff !important;
+}
+
+.btn-floating:hover i {
+  color: #ffffff !important;
+}

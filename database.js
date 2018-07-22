@@ -2,8 +2,9 @@ const self = this;
 const Sequelize = require('sequelize');
 const Crypto = require('crypto');
 
-sequelize = new Sequelize('live', 'root', '9kroMKNyinFykqnd', {
-  host: '35.201.3.29',
+sequelize = new Sequelize('live', 'wedding', '9kroMKNyinFykqnd', {
+  host: '192.168.20.14',
+  port: 3306,
   operatorAliases: false,
   dialect: 'mysql',
   pool: {
@@ -43,6 +44,9 @@ Guest = sequelize.define('guest', {
     type: Sequelize.BOOLEAN
   },
   dietaryRequirements: {
+    type: Sequelize.STRING
+  },
+  songRequest: {
     type: Sequelize.STRING
   }
 });
@@ -126,7 +130,7 @@ addOrUpdateUser = function (user) {
     return User.findOne({
       where: {
         id: user.id
-      }
+      }             
     }).then((dbUser) => {
       return dbUser.update(user).then((dbUser) => {
         return Guest.bulkCreate(user.guests).then((guests) => {
@@ -135,6 +139,21 @@ addOrUpdateUser = function (user) {
       });
     });
   }
+}
+
+setUserPassword = function (id, password) {
+    return User.findOne({
+      where: {
+        id: id
+      }
+    }).then((dbUser) => {
+      var salt = generateSalt();
+      var passwordHash = sha512(password, salt);
+      return dbUser.update({
+        passwordHash: passwordHash,
+        salt: salt
+      });
+    });
 }
 
 deleteUser = function (id) {
@@ -146,7 +165,9 @@ deleteUser = function (id) {
       { model: Guest, as: 'guests' }
     ]
   }).then((user) => {
-    return user.destroy();
+    return Guest.destroy({ where: { id: user.guests.map((g) => g.id) } }).then(() => {
+      return user.destroy();
+    });
   });
 }
 
@@ -156,6 +177,35 @@ authenticateUser = function (username, password) {
     user.isAuthenticated = passwordHash === user.passwordHash;
     return user;
   });
+}
+
+generateRandomUsername = function (length) {
+  length = length || 4;
+  return random(length);
+}
+
+generateRandomPassword = function (length) {
+  length = length || 8;
+  return Crypto.randomBytes(length)
+        .toString('base64')   // convert to base64 format
+        .slice(0, length)        // return required number of characters
+        .replace(/\+/g, '0')  // replace '+' with '0'
+        .replace(/\//g, '0'); // replace '/' with '0'
+}
+
+function random (howMany, chars) {
+    chars = chars 
+        || "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ";
+    var rnd = Crypto.randomBytes(howMany);
+    var value = new Array(howMany);
+    var len = Math.min(256, chars.length);
+    var d = 256 / len;
+
+    for (var i = 0; i < howMany; i++) {
+        value[i] = chars[Math.floor(rnd[i] / d)]
+    };
+
+    return value.join('');
 }
 
 /* Password hashing */
@@ -168,6 +218,7 @@ generateSalt = function(){
 };
 
 sha512 = function(password, salt){
+  console.log('About to sha512+salt password:', password, salt);
   var hash = Crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
   hash.update(password);
   return hash.digest('hex');
@@ -180,5 +231,8 @@ module.exports = {
   listUsers: listUsers,
   getUser: getUser,
   deleteUser: deleteUser,
-  addOrUpdateUser: addOrUpdateUser
+  addOrUpdateUser: addOrUpdateUser,
+  setUserPassword: setUserPassword,
+  generateRandomUsername: generateRandomUsername,
+  generateRandomPassword: generateRandomPassword
 }

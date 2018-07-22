@@ -1,36 +1,34 @@
-const self = this;
 var jwt = require('jsonwebtoken');
 const secret = '2413FB3709B05939F04CF2E92F7D0897FC2596F9AD0B8A9EA855C7BFEBAAE892';
 
-self.requireAuth = function (req, res, success) {
+requireAuth = function (req, res, success) {
   var token = req.cookies.authentication;
 
   // decode token
   if (token) {
     jwt.verify(token, secret, function(err, tokenData) {
       if (err) {
-      	self.loginRedirect(req, res);
+      	loginRedirect(req, res);
       } else {
         req.userData = tokenData;
         success(req.userData);
       }
     });
   } else {
-     self.loginRedirect(req, res);
+     loginRedirect(req, res);
   }
 }
 
-self.requireAdmin = function (req, res, success) {
+requireAdmin = function (req, res, success) {
   var token = req.cookies.authentication;
 
   // decode token
   if (token) {
     jwt.verify(token, secret, function(err, tokenData) {
       if (err) {
-        self.loginRedirect(req, res);
+        loginRedirect(req, res);
       } else {
         req.userData = tokenData;
-        console.log(tokenData);
         if (tokenData.isAdmin) {
           success();
         } else {
@@ -39,16 +37,17 @@ self.requireAdmin = function (req, res, success) {
       }
     });
   } else {
-     self.loginRedirect(req, res);
+     loginRedirect(req, res);
   }
 }
 
-self.loginRedirect = function (req, res) {
+loginRedirect = function (req, res) {
   res.redirect('/login?redirect=' + encodeURI(req.originalUrl));
 }
 
-self.issueToken = function (req, res, user, redirect) {
+issueToken = function (req, res, user, redirect) {
     var token = jwt.sign({
+      userId: user.id,
       username: user.username,
       isAdmin: user.isAdmin
     }, 
@@ -60,13 +59,13 @@ self.issueToken = function (req, res, user, redirect) {
     res.redirect(redirect || '/');
 }
 
-self.clearToken = function (req, res) {
+clearToken = function (req, res) {
     res.clearCookie('authentication');
 }
 
 module.exports = {
-  requireAuth: self.requireAuth,
-  requireAdmin: self.requireAdmin,
-  issueToken: self.issueToken,
-  clearToken: self.clearToken
+  requireAuth: requireAuth,
+  requireAdmin: requireAdmin,
+  issueToken: issueToken,
+  clearToken: clearToken
 }

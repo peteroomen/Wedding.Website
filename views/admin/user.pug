@@ -8,10 +8,13 @@ block content
     br
     form(method="post" action="/admin/users/save")
       div(class="row")
-        div(class="input-field col s9")
+        div(class="input-field col s5")
           input(name="username" type="text" value=user.username)
           label Username
-        div(class="input-field col s3")
+        div(class="input-field col s5") 
+          input(name="password" type="text" value=password)
+          label Password
+        div(class="input-field col s2")
           label
             input(id="admin" name="isAdmin" class="filled-in" type="checkbox" checked=user.isAdmin)
             span Is Admin
@@ -19,24 +22,17 @@ block content
         h5 Guests
         each guest, i in user.guests
           div(id="guests[" + i + "]" class="row")
-            div(class="input-field col s3")
+            div(class="input-field col s5")
               input(name="guests[" + i + "][firstName]" type="text" value=guest.firstName)
               label First Name
-            div(class="row input-field col s3")
+            div(class="row input-field col s5")
               input(name="guests[" + i + "][lastName]" type="text" value=guest.lastName)
               label Last Name
-            div(class="row input-field col s3")
-              input(name="guests[" + i + "][dietaryRequirements]" type="text" value=guest.dietaryRequirements)
-              label Dietary Requirements
             div(class="row input-field col s2")
-              label
-                input(name="guests[" + i + "][isAttending]" class="filled-in" type="checkbox" checked=guest.isAttending)
-                span Is Attending
-            div(class="row input-field col s1")
               a(href="javascript:void(0)" onclick="removeGuest(" + i + ")" class="btn-flat waves-effect btn-floating right small-margin-left")
                 i(class="material-icons dark-text") delete
 
-      div#no-guests(class="row" style="display: " + user.guests.length <= 0 ? 'block' : 'none')
+      div#no-guests(class="row" style="display: " + (user.guests.length <= 0 ? 'block' : 'none'))
         p This user has no guests
 
       input(name="id" type="hidden" value=user.id)
@@ -45,25 +41,18 @@ block content
         div(class="col s6 left-align no-padding")
           a(href="javascript:void(0)" onclick="addGuest()" class="waves-effect waves-light btn white dark-text") Add Guest
         div(class="col s6 right-align no-padding")
-          button(type="submit" class="waves-effect waves-light btn light-blue accent-3") Save
-          a(href="/admin/users" class="waves-effect waves-light btn white dark-text small-margin-left") Cancel
+          a(href="/admin/users" class="waves-effect waves-light btn white dark-text") Cancel
+          button(type="submit" class="waves-effect waves-light btn light-blue accent-3 small-margin-left") Save
 
 
   div#user-template(class="row" style="display: none")
-    div(class="input-field col s3")
+    div(class="input-field col s5")
       input(class="first-name" type="text")
       label First Name
-    div(class="row input-field col s3")
+    div(class="row input-field col s5")
       input(class="last-name" type="text")
       label Last Name
-    div(class="row input-field col s3")
-      input(class="dietary-requirements" type="text")
-      label Dietary Requirements
     div(class="row input-field col s2")
-      label
-        input(class="is-attending filled-in" type="checkbox")
-        span Is Attending
-    div(class="row input-field col s1")
       a(href="javascript:void(0)" class="btn-flat waves-effect btn-floating right small-margin-left remove-icon")
         i(class="material-icons dark-text") delete
 
@@ -82,8 +71,6 @@ block content
       row.innerHTML = template;
       row.getElementsByClassName('first-name')[0].setAttribute('name', 'guests[' + i + '][firstName]');
       row.getElementsByClassName('last-name')[0].setAttribute('name', 'guests[' + i + '][lastName]');
-      row.getElementsByClassName('dietary-requirements')[0].setAttribute('name', 'guests[' + i + '][dietaryRequirements]');
-      row.getElementsByClassName('is-attending')[0].setAttribute('name', 'guests[' + i + '][isAttending]');
       row.getElementsByClassName('remove-icon')[0].setAttribute('onclick', 'removeGuest(' + i + ')');
       console.log(row);
       document.getElementById('user-list').appendChild(row);

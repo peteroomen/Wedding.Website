@@ -55,7 +55,39 @@ app.get('/info', (req, res) => {
 
 app.get('/rsvp', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
-    res.render('rsvp', { page: 'rsvp', currentUser: currentUser });
+    var status = req.query.status || '';
+    database.getUser(currentUser.userId).then((user) => {
+      console.log("RSVP for user:", user);
+      res.render('rsvp', { page: 'rsvp', currentUser: currentUser, user: user, status: status });
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/');
+    });
+  });
+});
+
+app.post('/rsvp', (req, res) => {
+  authentication.requireAuth(req, res, (currentUser) => {
+    var user = {
+      id: currentUser.userId,
+      username: currentUser.username,
+      isAdmin: currentUser.isAdmin != undefined,
+      guests: (req.body.guests || []).map((guest) => {
+        return {
+          firstName: guest.firstName,
+          lastName: guest.lastName,
+          dietaryRequirements: guest.dietaryRequirements,
+          songRequest: guest.songRequest,
+          isAttending: guest.isAttending != undefined
+        };
+      })
+    };
+    database.addOrUpdateUser(user).then((user) => {
+      res.redirect('/rsvp?status=success');
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/rsvp?status=error');
+    });
   });
 });
 
@@ -110,7 +142,9 @@ app.get('/admin/users', (req, res) => {
 
 app.get('/admin/users/add', (req, res) => {
   authentication.requireAdmin(req, res, (currentUser) => {
-      res.render('admin/user', { page: 'user', currentUser: currentUser, user: { guests: [] } });
+      var username = database.generateRandomUsername();
+      var password = database.generateRandomPassword();
+      res.render('admin/user', { page: 'users', currentUser: currentUser, user: { username: username, guests: [] }, password: password });
   });
 });
 
@@ -125,12 +159,18 @@ app.post('/admin/users/save', (req, res) => {
           firstName: guest.firstName,
           lastName: guest.lastName,
           dietaryRequirements: guest.dietaryRequirements,
+          songRequest: guest.songRequest,
           isAttending: guest.isAttending != undefined
         };
       })
     };
     database.addOrUpdateUser(user).then((user) => {
-      res.redirect('/admin/users');
+      database.setUserPassword(user.id, req.body.password.toString()).then((user) => {
+        res.redirect('/admin/users');
+      }, (error) => {
+        console.error('error', error);
+        res.redirect('/admin/users');
+      });
     }, (error) => {
       console.error('error', error);
       res.redirect('/admin/users');
@@ -165,7 +205,7 @@ app.get('/admin/users/:id/delete', (req, res) => {
 
 // Start the server
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
