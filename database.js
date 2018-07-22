@@ -130,11 +130,15 @@ addOrUpdateUser = function (user) {
     return User.findOne({
       where: {
         id: user.id
-      }             
+      }, include: [
+        { model: Guest, as: 'guests' }
+      ]           
     }).then((dbUser) => {
-      return dbUser.update(user).then((dbUser) => {
-        return Guest.bulkCreate(user.guests).then((guests) => {
-          return dbUser.setGuests(guests);
+      return Guest.destroy({ where: { id: dbUser.guests.map((g) => g.id) } }).then(() => {
+        return dbUser.update(user).then((dbUser) => {
+          return Guest.bulkCreate(user.guests).then((guests) => {
+            return dbUser.setGuests(guests);
+          });
         });
       });
     });

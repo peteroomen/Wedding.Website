@@ -165,7 +165,12 @@ app.post('/admin/users/save', (req, res) => {
       })
     };
     database.addOrUpdateUser(user).then((user) => {
-      database.setUserPassword(user.id, req.body.password.toString()).then((user) => {
+      if (!req.body.password) {
+        console.log('No password set, not updating');
+        res.redirect('/admin/users');
+        return;
+      }
+      database.setUserPassword(user.id, req.body.password).then((user) => {
         res.redirect('/admin/users');
       }, (error) => {
         console.error('error', error);
