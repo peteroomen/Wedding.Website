@@ -53,6 +53,12 @@ app.get('/info', (req, res) => {
   });
 });
 
+app.get('/story', (req, res) => {
+  authentication.requireAuth(req, res, (currentUser) => {
+    res.render('our-story', { page: 'story', currentUser: currentUser  });
+  });
+});
+
 app.get('/rsvp', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     var status = req.query.status || '';

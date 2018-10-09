@@ -72,39 +72,11 @@
 	"buffers":
 	[
 		{
-			"file": "views/admin/user.pug",
+			"file": "/C/Users/Peter/Documents/delix.web/src/index.js",
 			"settings":
 			{
-				"buffer_size": 4114,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app.js",
-			"settings":
-			{
-				"buffer_size": 6425,
-				"encoding": "UTF-8",
+				"buffer_size": 254,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "authentication.js",
-			"settings":
-			{
-				"buffer_size": 1600,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "database.js",
-			"settings":
-			{
-				"buffer_size": 5191,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -140,35 +112,30 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Peter/Documents/Wedding.Website",
-		"/C/Users/Peter/Documents/Wedding.Website/static",
-		"/C/Users/Peter/Documents/Wedding.Website/static/css",
-		"/C/Users/Peter/Documents/Wedding.Website/views",
-		"/C/Users/Peter/Documents/Wedding.Website/views/admin",
-		"/C/Users/Peter/Documents/Wedding.Website/views/includes",
-		"/C/Users/Peter/Documents/Wedding.Website/views/shared"
 	],
 	"file_history":
 	[
-		"/C/Users/Peter/Documents/Wedding.Website/authentication.js",
+		"/C/Users/Peter/Documents/delix.web/firebase.json",
 		"/C/Users/Peter/Documents/Wedding.Website/static/css/site.css",
-		"/C/Users/Peter/Documents/Wedding.Website/app.js",
-		"/C/Users/Peter/Documents/Wedding.Website/views/admin/user.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/static/js/header-bar.js",
-		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/info.pug",
-		"/C/Users/Peter/Downloads/bip-beta.PublishSettings",
+		"/E/TorrentDownloads/Yokus.Island.Express-CODEX/RARBG.txt",
+		"/C/Users/Peter/Documents/Wedding.Website/static/css/home.css",
+		"/C/Users/Peter/Documents/Wedding.Website/views/admin/user.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/app.js",
+		"/C/Users/Peter/Documents/Wedding.Website/views/includes/admin-header-bar.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/authentication.js",
 		"/C/Users/Peter/Documents/Wedding.Website/database.js",
+		"/C/Users/Peter/Documents/Wedding.Website/views/includes/header-bar.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/static/js/header-bar.js",
+		"/C/Users/Peter/Downloads/bip-beta.PublishSettings",
 		"/C/Users/Peter/Documents/Wedding.Website/views/admin/users.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/todo",
-		"/C/Users/Peter/Documents/Wedding.Website/views/includes/header-bar.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/shared/admin-layout.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/includes/head.pug",
 		"/C/Users/Peter/Documents/AutoHotKey/stopdoubleclick.ahk",
 		"/C/Users/Peter/Documents/AutoHotKey/stopleftdoubleclick.ahk",
 		"/C/Users/Peter/Documents/Wedding.Website/views/login.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/views/includes/admin-header-bar.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/static/css/home.css",
 		"/C/Users/Peter/Documents/Wedding.Website/static/js/info.js",
 		"/C/Users/Peter/Documents/Wedding.Website/views/admin/overview.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/app.yaml",
@@ -224,7 +191,7 @@
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -238,9 +205,19 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"e ceremony will be held at Mount ",
+			"The ceremony will be held at Mount Manganui Beach, by the corner of Marine Parade and Hart Street. The ceremony will begin at around 2:30 PM, so please arrive at or just before that time.\n\n",
+			"dark-text",
+			"#ffcc80",
+			"getUserByUsername",
+			"if",
+			"console",
+			"log",
+			"logging in",
+			"loggin in",
 			"save",
 			"len",
 			"console.",
@@ -280,6 +257,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"#009688",
 			"  ",
 			"elements",
 			"row",
@@ -304,127 +282,35 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "views/admin/user.pug",
+					"file": "/C/Users/Peter/Documents/delix.web/src/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4114,
+						"buffer_size": 254,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2014,
-								2014
+								254,
+								254
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 202.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6425,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6002,
-								6002
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2070.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "authentication.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1600,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								800,
-								800
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "database.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5191,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								896,
-								896
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1710.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
