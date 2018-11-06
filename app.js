@@ -102,7 +102,10 @@ app.post('/rsvp', (req, res) => {
 
 app.get('/registry', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
-    res.render('registry', { page: 'registry', currentUser: currentUser  });
+    database.listGifts().then((gifts) => {
+      console.log(gifts);
+      res.render('registry', { page: 'registry', currentUser: currentUser, gifts: gifts  });
+    });
   });
 });
 
@@ -212,6 +215,63 @@ app.get('/admin/users/:id/delete', (req, res) => {
     }, (error) => {
       console.error('error', error);
       res.redirect('/admin/users');
+    });
+  });
+});
+
+app.get('/admin/gifts', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    database.listGifts().then((gifts) => {
+      res.render('admin/gifts', { page: 'gifts', currentUser: currentUser, gifts: gifts });
+    });
+  });
+});
+
+app.get('/admin/gifts/add', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+      res.render('admin/gift', { page: 'gifts', currentUser: currentUser, gift: { } });
+  });
+});
+
+app.post('/admin/gifts/save', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var gift = {
+      id: req.body.id,
+      name: req.body.name,
+      specifications: req.body.specifications,
+      description: req.body.description,
+      imageUri: req.body.imageUri,
+      purchaseUri: req.body.purchaseUri,
+    };
+    database.addOrUpdateGift(gift).then((user) => {
+      res.redirect('/admin/gifts');
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/gifts');
+    });
+  });
+});
+
+app.get('/admin/gifts/:id', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var id = req.params.id;
+    database.getGift(id).then((gift) => {
+      res.render('admin/gift', { page: 'gift', currentUser: currentUser, gift: gift });
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/gifts');
+    });
+  });
+});
+
+app.get('/admin/gifts/:id/delete', (req, res) => {
+  authentication.requireAdmin(req, res, (currentUser) => {
+    var id = req.params.id;
+    database.deleteGift(id).then((gift) => {
+      res.redirect('/admin/gifts');
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/admin/gifts');
     });
   });
 });

@@ -2,7 +2,7 @@ const self = this;
 const Sequelize = require('sequelize');
 const Crypto = require('crypto');
 const config = require('./config.json');
-console.log(config);
+
 sequelize = new Sequelize(config.database.catalog, config.database.username, config.database.password, {
   host: config.database.host,
   port: 3306,
@@ -53,6 +53,26 @@ Guest = sequelize.define('guest', {
 });
 
 User.hasMany(Guest, { as: 'guests', onDelete: 'CASCADE' });
+
+Gift = sequelize.define('gift', {
+  name: {
+    type: Sequelize.STRING
+  },
+  specifications: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.STRING
+  },
+  imageUri: {
+    type: Sequelize.STRING
+  },
+  purchaseUri: {
+    type: Sequelize.STRING
+  }
+});
+
+User.hasOne(Gift, { as: 'purchaser', onDelete: 'CASCADE' });
 
 /* METHODS */
 
@@ -169,9 +189,9 @@ deleteUser = function (id) {
     include: [
       { model: Guest, as: 'guests' }
     ]
-  }).then((user) => {
-    return Guest.destroy({ where: { id: user.guests.map((g) => g.id) } }).then(() => {
-      return user.destroy();
+  }).then((dbUser) => {
+    return Guest.destroy({ where: { id: dbUser.guests.map((g) => g.id) } }).then(() => {
+      return dbUser.destroy();
     });
   });
 }
@@ -183,6 +203,55 @@ authenticateUser = function (username, password) {
     return user;
   });
 }
+
+
+/* Gifts */
+listGifts = function () {
+  return Gift.findAll({
+    include: [
+      //{ model: User, as: 'purchaser', required: false }
+    ]
+  });
+}
+
+getGift = function (id) {
+  return Gift.findOne({
+    where: {
+      id: id
+    }, 
+    include: [
+      //{ model: User, as: 'purchaser', required: false }
+    ]
+  });
+}
+
+addOrUpdateGift = function (gift) {
+  if (!gift.id) {
+    // Add a new gift
+    return Gift.create(gift);
+  } else {
+    return Gift.findOne({
+      where: {
+        id: gift.id
+      }     
+    }).then((dbGift) => {
+        return dbGift.update(gift);
+    });
+  }
+}
+
+deleteGift = function (id) {
+  return Gift.findOne({
+    where: {
+      id: id
+    }
+  }).then((dbGift) => {
+    return dbGift.destroy();
+  });
+}
+
+
+/* Helper functions */
 
 generateRandomUsername = function (length) {
   length = length || 4;
@@ -238,6 +307,10 @@ module.exports = {
   deleteUser: deleteUser,
   addOrUpdateUser: addOrUpdateUser,
   setUserPassword: setUserPassword,
+  listGifts: listGifts,
+  getGift: getGift,
+  addOrUpdateGift: addOrUpdateGift,
+  deleteGift: deleteGift,
   generateRandomUsername: generateRandomUsername,
   generateRandomPassword: generateRandomPassword
 }

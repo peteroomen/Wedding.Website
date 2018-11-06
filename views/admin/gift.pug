@@ -1,0 +1,36 @@
+extends ../shared/admin-layout.pug
+block head
+
+block content
+  div(class="container") 
+    br
+    h4 #{gift.id ? "Edit Gift" : "Add Gift"}
+    br
+    form(method="post" action="/admin/gifts/save")
+      div(class="row")
+        div(class="input-field col s6")
+          input(name="name" type="text" value=gift.name)
+          label Name
+        div(class="input-field col s6")
+          input(name="specifications" type="text" value=gift.specifications)
+          label Specifications
+
+      div(class="row")
+        div(class="input-field col s6")
+          input(name="imageUri" type="text" value=gift.imageUri)
+          label Image URI
+        div(class="input-field col s6")
+          input(name="purchaseUri" type="text" value=gift.purchaseUri)
+          label Purchase URI
+
+      div(class="row")
+        div(class="input-field col s12")
+          input(name="description" type="text" value=gift.description)
+          label Description
+     
+      input(name="id" type="hidden" value=gift.id)
+
+      div(class="row")
+        div(class="col s12 right-align no-padding")
+          a(href="/admin/gifts" class="waves-effect waves-light btn white dark-text") Cancel
+          button(type="submit" class="waves-effect waves-light btn light-blue accent-3 small-margin-left") Save

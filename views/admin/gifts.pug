@@ -1,0 +1,29 @@
+extends ../shared/admin-layout.pug
+block head
+
+block content
+  div(class="container") 
+    br
+    h4 Gifts
+    br
+    table
+      tr
+        th Name
+        th Specifications
+        th Description
+        th
+
+      each gift in gifts
+        tr
+          td= gift.name
+          td= gift.specifications
+          td= gift.description
+          td
+            a(href="/admin/gifts/" + gift.id + "/delete" class="btn-flat waves-effect btn-floating right small-margin-left")
+              i(class="material-icons dark-text") delete
+            a(href="/admin/gifts/" + gift.id  class="btn-flat waves-effect btn-floating right small-margin-left")
+              i(class="material-icons dark-text") edit
+
+  a(href="/admin/gifts/add/" class="btn-floating btn-large waves-effect waves-light fab light-blue accent-3")
+    i(class="material-icons white-text") add
+

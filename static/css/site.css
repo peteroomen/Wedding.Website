@@ -23,7 +23,6 @@ body * {
 
 a {
   color: unset;
-  cursor: unset;
   text-decoration: unset;
 }
 
@@ -47,6 +46,10 @@ h1, h2, h3, h4, h5 {
 
 .no-padding {
   padding: 0;s
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .btn-floating.fab {
@@ -265,6 +268,9 @@ h1, h2, h3, h4, h5 {
   vertical-align: text-top;
 }
 
+.material-tooltip .tooltip-content {
+  color: white;
+}
 
 
 /* Input colors */
