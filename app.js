@@ -39,14 +39,20 @@ const authentication = require('./authentication.js');
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
-// Setup routes
+
+/* Setup routes */
+
+// set up a route to redirect http to https
+app.get('*', function(req, res) {  
+    res.redirect('https://' + req.headers.host + req.url);
+})
+
 app.get('/', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     res.render('home', { page: 'home', currentUser: currentUser });
   });
 });
 
-// Setup routes
 app.get('/info', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     res.render('info', { page: 'info', currentUser: currentUser  });
