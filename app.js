@@ -43,13 +43,7 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 
-/* Setup routes */
-
-// set up a route to redirect http to https
-app.get('*', function(req, res) {  
-    res.redirect('https://' + req.headers.host + req.url);
-})
-
+// Setup routes
 app.get('/', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     res.render('home', { page: 'home', currentUser: currentUser });
