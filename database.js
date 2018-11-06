@@ -1,9 +1,10 @@
 const self = this;
 const Sequelize = require('sequelize');
 const Crypto = require('crypto');
-
-sequelize = new Sequelize('live', 'wedding', '9kroMKNyinFykqnd', {
-  host: '192.168.20.14',
+const config = require('./config.json');
+console.log(config);
+sequelize = new Sequelize(config.database.catalog, config.database.username, config.database.password, {
+  host: config.database.host,
   port: 3306,
   operatorAliases: false,
   dialect: 'mysql',

@@ -1,0 +1,11 @@
+{
+  "web": {
+    "port": "web_server_port"
+  },
+  "database": {
+    "host": "database_host_name",
+    "catalog": "database_name",
+    "username" "database_username",
+    "password": "database_password"
+  }
+}

@@ -19,6 +19,9 @@
 const express = require('express');
 const app = express();
 
+// Load the config file
+const config = require('./config.json');
+
 // Set the view engine and configure
 app.set('view engine', 'pug');
 
@@ -221,7 +224,7 @@ app.get('/admin/users/:id/delete', (req, res) => {
 
 
 // Start the server
-const PORT = process.env.PORT || 8080;
+const PORT = config.web.port || process.env.PORT || 8080;
 app.listen(PORT,'0.0.0.0', () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
