@@ -80,7 +80,7 @@ app.post('/rsvp', (req, res) => {
     var user = {
       id: currentUser.userId,
       username: currentUser.username,
-      isAdmin: currentUser.isAdmin != undefined,
+      isAdmin: currentUser.isAdmin,
       guests: (req.body.guests || []).map((guest) => {
         return {
           firstName: guest.firstName,
