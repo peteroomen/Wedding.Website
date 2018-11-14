@@ -1,4 +1,7 @@
 extends shared/layout.pug
+block head
+  script(src='/js/jquery-ajax.js')
+
 block content
   div(class="container") 
       div(class="section")
@@ -8,25 +11,140 @@ block content
         br
 
         div(class="row")
+          div(class="input-field col s4")
+          div(class="input-field col s4")
+            input(id="text-filter" type="text")
+            label Text filter
+          div(class="input-field col s4")
+            select(id="purchase-filter")
+              option(value="undefined" selected) All
+              option(value="true") Purchased
+              option(value="false") Not purchased
+            label Purchase status
+
+        div(class="row")
           each gift in gifts
-            div(class="col s4")
+            div(class="col s4 gift")
               div(class="card")
                 div(class="card-image")
                   img(src=gift.imageUri)
-                  a(class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-tooltip="I will purchase this")
+                  a(class="btn-floating halfway-fab waves-effect waves-light grey tooltipped purchased" 
+                    data-position="bottom" 
+                    purchased=purchased=currentUser.userId == gift.purchaserId
+                    onclick=`onPurchaseClick(this, ${gift.id}, ${currentUser.userId})`)
+                    
                     i(class="material-icons") attach_money
 
                 div(class="card-content")
-                  span(class="card-title")= gift.name
-                  p
+                  span(class="card-title" name=gift.name)= gift.name
+                  p(specifications=gift.specifications)
                     b= gift.specifications
-                  p= gift.description
-
+                  p(class="fixed-height" description=gift.description)= gift.description
                 div(class="card-action")
-                  a(href=gift.purchaseUri target="_blank") Purchase
+                  a(href=gift.purchaseUri target="_blank") Show website
+        p(id="no-gifts-message" style="display: none;") No gifts currently visible, please clear filters
+
 
   script.
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.tooltipped');
-      var instances = M.Tooltip.init(elems, {});
+      // Init materialize selects
+      var elements = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elements, {});
+
+      // Init materialize tooltips
+      updateTooltips();
+
+      // Init text filter
+      var textFilterElement = document.getElementById('text-filter');
+      textFilterElement.addEventListener('change', updateFilters);
+      textFilterElement.addEventListener('paste', updateFilters);
+      textFilterElement.addEventListener('input', updateFilters);
+      textFilterElement.addEventListener('keypress', updateFilters);
+
+      var purchaseFilterElement = document.getElementById('purchase-filter');
+      purchaseFilterElement.addEventListener('change', updateFilters);
     });
+
+    function onPurchaseClick(element, giftId, userId) {
+      var isPurchasing = !element.hasAttribute('purchased');
+      if (isPurchasing) {
+        element.setAttribute('purchased', '');
+      } else {
+        element.removeAttribute('purchased');
+      }
+      updateTooltips();
+
+      $.post('', {
+        giftId: giftId,
+        userId: userId,
+        add: isPurchasing
+      }).then(function () {
+        M.toast({html: isPurchasing ? 'Gift marked as purchased' : 'Gift no longer marked as purchased'});
+      }, function (err) {
+        M.toast({html: 'Could not mark gift as purchased, please refresh and try again'});
+      });
+    }
+
+    function updateTooltips() {
+      document.querySelectorAll('.tooltipped').forEach(function (element) {
+        if (element.hasAttribute('purchased')) {
+          element.setAttribute('data-tooltip', 'You purchased this gift');
+        } else {
+          element.setAttribute('data-tooltip', 'Mark gift as purchased');
+        }
+        var instances = M.Tooltip.init(element, {});
+      });
+    }
+
+    function updateFilters() {
+      var textFilterValue = document.getElementById('text-filter').value;
+      
+      var purchasedFilterElement = document.getElementById('purchase-filter');
+      var purchasedFilterValue;
+      if (purchasedFilterElement.value == "true") purchasedFilterValue = true;
+      else if (purchasedFilterElement.value == "false") purchasedFilterValue = false;
+
+      var visibleCount = 0;
+
+      document.querySelectorAll('.gift').forEach(function (element) {
+        if (testTextFilter(element, textFilterValue) && testPurchaseStatusFilter(element, purchasedFilterValue)) {
+          element.style.display = 'block';
+          visibleCount++;
+        } else {
+          element.style.display = 'none';
+        }
+      });
+
+      if (visibleCount == 0) {
+        document.getElementById('no-gifts-message').style.display = 'block';
+      } else {
+        document.getElementById('no-gifts-message').style.display = 'none';
+      }
+    }
+
+    function testTextFilter(element, filterText) {
+      var name = element.querySelector('[name]')
+        .getAttribute('name')
+        .toUpperCase();
+
+      var specifications = element.querySelector('[specifications]')
+        .getAttribute('specifications')
+        .toUpperCase();
+
+      var description = element.querySelector('[description]')
+        .getAttribute('description')
+        .toUpperCase();
+
+      filterText = filterText.toUpperCase();
+
+      return !filterText ||
+          filterText == "" ||
+          name.indexOf(filterText) > -1 ||
+          specifications.indexOf(filterText) > -1 ||
+          description.indexOf(filterText) > -1;
+    }
+
+    function testPurchaseStatusFilter(element, filterValue) {
+      var purchased = element.querySelector('.purchased').hasAttribute('purchased');
+      return filterValue === undefined || filterValue == purchased;
+    }

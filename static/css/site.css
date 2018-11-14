@@ -48,6 +48,10 @@ h1, h2, h3, h4, h5 {
   padding: 0;s
 }
 
+.no-margin {
+  margin: 0;s
+}
+
 .no-wrap {
   white-space: nowrap;
 }
@@ -296,10 +300,19 @@ input[type=text]:focus {
 }
 
 /* button colour */
-.btn-floating:hover {
+.btn-floating[purchased] {
   background-color: #00b0ff !important;
 }
 
 .btn-floating:hover i {
   color: #ffffff !important;
+}
+
+.material-tooltip .tooltip-content {
+  color: white;
+}
+
+.card .card-content .fixed-height {
+  height: 72px;
+  overflow: auto;
 }

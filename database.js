@@ -94,7 +94,6 @@ init = function () {
     var username = 'admin';
 
     return getUserByUsername(username).then((user) => {
-      console.log(user);
       if (!user) {
         var salt = generateSalt();
         var password = 'rubyrose20';
@@ -207,10 +206,17 @@ authenticateUser = function (username, password) {
 
 /* Gifts */
 listGifts = function () {
+  return Gift.findAll();
+}
+
+listGiftsForUser = function (userId) {
   return Gift.findAll({
-    include: [
-      //{ model: User, as: 'purchaser', required: false }
-    ]
+    where: {
+      $or: [
+        { purchaserId: userId }, 
+        { purchaserId: null }
+      ]
+    }
   });
 }
 
@@ -218,10 +224,7 @@ getGift = function (id) {
   return Gift.findOne({
     where: {
       id: id
-    }, 
-    include: [
-      //{ model: User, as: 'purchaser', required: false }
-    ]
+    }
   });
 }
 
@@ -250,6 +253,31 @@ deleteGift = function (id) {
   });
 }
 
+setGiftPurchaser = function (giftId, userId) {
+  return Gift.findOne({
+    where: {
+      id: giftId
+    }
+  }).then(function (dbGift) {
+    if (dbGift.purchaserId != undefined) {
+      return Promise.reject();
+    }
+    return sequelize.query('UPDATE gifts SET purchaserId = ' + userId + ' WHERE id = ' + giftId);
+  });
+}
+
+removeGiftPurchaser = function (giftId, userId) {
+  return Gift.findOne({
+    where: {
+      id: giftId
+    }
+  }).then(function (dbGift) {
+    if (dbGift.purchaserId != userId) {
+      return Promise.reject();
+    }
+    return sequelize.query('UPDATE gifts SET purchaserId = NULL WHERE id = ' + giftId);
+  });
+}
 
 /* Helper functions */
 
@@ -292,7 +320,6 @@ generateSalt = function(){
 };
 
 sha512 = function(password, salt){
-  console.log('About to sha512+salt password:', password, salt);
   var hash = Crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
   hash.update(password);
   return hash.digest('hex');
@@ -308,9 +335,12 @@ module.exports = {
   addOrUpdateUser: addOrUpdateUser,
   setUserPassword: setUserPassword,
   listGifts: listGifts,
+  listGiftsForUser: listGiftsForUser,
   getGift: getGift,
   addOrUpdateGift: addOrUpdateGift,
   deleteGift: deleteGift,
+  setGiftPurchaser: setGiftPurchaser,
+  removeGiftPurchaser: removeGiftPurchaser,
   generateRandomUsername: generateRandomUsername,
   generateRandomPassword: generateRandomPassword
 }

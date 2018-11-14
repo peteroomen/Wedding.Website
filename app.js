@@ -102,9 +102,28 @@ app.post('/rsvp', (req, res) => {
 
 app.get('/registry', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
-    database.listGifts().then((gifts) => {
-      console.log(gifts);
+    database.listGiftsForUser(currentUser.userId).then((gifts) => {
       res.render('registry', { page: 'registry', currentUser: currentUser, gifts: gifts  });
+    });
+  });
+});
+
+app.post('/registry', (req, res) => {
+  var giftId = req.body.giftId;
+  var userId = req.body.userId;
+  var add = req.body.add == "true";
+
+  authentication.requireAuth(req, res, (currentUser) => {
+    var promise;
+
+    if (add) promise = database.setGiftPurchaser(giftId, userId);
+    else promise = database.removeGiftPurchaser(giftId, userId);
+
+    promise.then(() => {
+      res.sendStatus(200);
+    }, (error) => {
+      console.error('error', error);
+      res.sendStatus(400);
     });
   });
 });
