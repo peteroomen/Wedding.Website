@@ -103,7 +103,7 @@ app.post('/rsvp', (req, res) => {
 app.get('/registry', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     database.listGiftsForUser(currentUser.userId).then((gifts) => {
-      res.render('registry', { page: 'registry', currentUser: currentUser, gifts: gifts  });
+      res.render('registry', { page: 'registry', currentUser: currentUser, gifts: gifts.sort(function (a, b) { return a.name.localeCompare(b.name); }) });
     });
   });
 });
@@ -159,7 +159,9 @@ app.get('/logout', (req, res) => {
 
 app.get('/admin', (req, res) => {
   authentication.requireAdmin(req, res, (currentUser) => {
-    res.render('admin/overview', { page: 'overview', currentUser: currentUser  });
+    database.listUsers().then((users) => {
+      res.render('admin/overview', { page: 'overview', currentUser: currentUser, users: users  });
+    });
   });
 });
 

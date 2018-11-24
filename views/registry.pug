@@ -8,42 +8,50 @@ block content
         br
         h4 Gift Registry
         br
+        p We are so happy that you will be able to join us for our wedding. While the precence of you company is the only gift we could ask for, an alternative registry has been set up here for those who have expressed an intrest in offering a gift to mark the occasion.
+        p If you would prefer, another option would be a cash gift towards our honeymoon. If you would like to do this, then you may make a deposit to the bank account number below. 
+        p 
+          b Account Number: 06-0983-0130614-03
         br
+        h5 Filter registry
 
         div(class="row")
-          div(class="input-field col s4")
-          div(class="input-field col s4")
+          div(class="input-field col s6")
             input(id="text-filter" type="text")
             label Text filter
-          div(class="input-field col s4")
+          div(class="input-field col s6")
             select(id="purchase-filter")
               option(value="undefined" selected) All
               option(value="true") Purchased
               option(value="false") Not purchased
             label Purchase status
 
-        div(class="row")
-          each gift in gifts
-            div(class="col s4 gift")
-              div(class="card")
-                div(class="card-image")
-                  img(src=gift.imageUri)
-                  a(class="btn-floating halfway-fab waves-effect waves-light grey tooltipped purchased" 
-                    data-position="bottom" 
-                    purchased=purchased=currentUser.userId == gift.purchaserId
-                    onclick=`onPurchaseClick(this, ${gift.id}, ${currentUser.userId})`)
-                    
-                    i(class="material-icons") attach_money
+          div(class="row")
+            div(class="col s12")
+              each gift, index in gifts
+                if index % 3 === 0 
+                  div(class="row")
+                  
+                div(class="col s12 m4 gift")
+                  div(class="card")
+                    div(class="card-image")
+                      img(src=gift.imageUri)
+                      a(class="btn-floating halfway-fab waves-effect waves-light grey tooltipped purchased" 
+                        data-position="bottom" 
+                        purchased=purchased=currentUser.userId == gift.purchaserId
+                        onclick=`onPurchaseClick(this, ${gift.id}, ${currentUser.userId})`)
+                        
+                        i(class="material-icons") attach_money
 
-                div(class="card-content")
-                  span(class="card-title" name=gift.name)= gift.name
-                  p(specifications=gift.specifications)
-                    b= gift.specifications
-                  p(class="fixed-height" description=gift.description)= gift.description
-                div(class="card-action")
-                  a(href=gift.purchaseUri target="_blank") Show website
-        p(id="no-gifts-message" style="display: none;") No gifts currently visible, please clear filters
-
+                    div(class="card-content")
+                      span(class="card-title" name=gift.name)= gift.name
+                      p(specifications=gift.specifications)
+                        b= gift.specifications
+                      p(class="fixed-height" description=gift.description)= gift.description
+                    div(class="card-action")
+                      a(href=gift.purchaseUri target="_blank") Show website
+            div(class="col s12")
+              p(id="no-gifts-message" style="display: none;") No gifts currently visible, please clear filters
 
   script.
     document.addEventListener('DOMContentLoaded', function() {

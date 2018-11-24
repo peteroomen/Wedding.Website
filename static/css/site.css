@@ -311,8 +311,13 @@ input[type=text]:focus {
 .material-tooltip .tooltip-content {
   color: white;
 }
-
+/*
 .card .card-content .fixed-height {
   height: 72px;
   overflow: auto;
 }
+
+.card .card-image img {
+  height: 404.16px;
+}
+*/

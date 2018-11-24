@@ -2,4 +2,32 @@ extends ../shared/admin-layout.pug
 block head
 
 block content
-  h2 Admin Overview
+  div(class="container") 
+    br
+    h4 Overview
+    br
+    -
+      var allGuests = users.map(user => user.guests).reduce((a, b) => a.concat(b));
+      var totalCount = allGuests.length;
+      var attendingCount = allGuests.filter(guest => guest.isAttending).length;
+
+    p Currently, #{attendingCount} guests out of #{totalCount} are attending.
+    br
+    table
+      tr
+        th First Name
+        th Last Name
+        th Dietary Requirements
+        th Song Requests
+        th Is Attending
+      each user in users
+        each guest in user.guests
+          tr
+            td= guest.firstName 
+            td= guest.lastName
+            td= guest.dietaryRequirements
+            td= guest.songRequest
+            td= guest.isAttending ? "Yes" : "No"
+    br
+    br
+    br
