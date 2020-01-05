@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var secondsElement = document.getElementById('seconds');
 
     var currentDate = new Date();
-    var weddingDate = new Date(2019, 0, 27, 15, 0, 0);
+    var weddingDate = new Date(2020, 2, 21, 13, 0, 0);
     var differenceSec = (weddingDate.getTime() - currentDate.getTime()) / 1000;
 
     var days = Math.floor(differenceSec / 86400);

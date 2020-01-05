@@ -68,7 +68,8 @@ h1, h2, h3, h4, h5 {
   top: 0;
   left: 0;
   right: 0;
-  background: #009688;
+  background: #d7be2f;
+  color: white;
   transition: top 150ms ease-in-out;
   z-index: 10;
 }
@@ -87,7 +88,7 @@ h1, h2, h3, h4, h5 {
 #header-bar .logo-bar h1 {
   padding: 0;
   margin: 0;
-  font-family: 'Rouge Script', cursive;
+  font-family: 'Times New Roman', sans-serif;
   font-weight: 400;
   font-size: 64px;
   color: white;
@@ -188,7 +189,7 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .beach-background .text h1 {
-  font-family: 'Rouge Script', cursive;
+  font-family: 'Times New Roman', sans-serif;
   font-weight: 400;
   font-size: 6em;
   padding-bottom: 12px;
@@ -243,7 +244,7 @@ h1, h2, h3, h4, h5 {
 }
 
 #login-content .beach-background h1 {
-  font-family: 'Rouge Script', cursive;
+  font-family: 'Times New Roman', sans-serif;
   font-weight: 400;
   font-size: 6em;
 }
