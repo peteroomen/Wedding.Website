@@ -9,3 +9,31 @@
     "password": "database_password"
   }
 }
+
+
+/* Local */
+{
+  "web": {
+    "port": "8080"
+  },
+  "database": {
+    "host": "45.77.50.22",
+    "catalog": "wedding",
+    "username" "root",
+    "password": "G7ZSVerqHwdMQ47B"
+  }
+}
+
+
+/* Live */
+{
+  "web": {
+    "port": "80"
+  },
+  "database": {
+    "host": "localhost"",
+    "catalog": "wedding",
+    "username" "root",
+    "password": "G7ZSVerqHwdMQ47B"
+  }
+}

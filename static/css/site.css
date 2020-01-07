@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5 {
   top: 0;
   left: 0;
   right: 0;
-  background: #d7be2f;
+  background: #E5C215;
   color: white;
   transition: top 150ms ease-in-out;
   z-index: 10;
@@ -161,34 +161,32 @@ h1, h2, h3, h4, h5 {
   width: 50%;
 }
 
-.beach-background {
+#content .background {
   background-image: url('/img/bg.jpg');
   background-size: cover;
   background-position: center;
-}
-
-#content .beach-background {
+  
   height: 100%;
   box-sizing: border-box;
   text-align: center;
   position: relative;
 }
 
-#content .beach-background * {
+#content .background * {
   margin: 0;
   padding: 0;
   color: white;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
 }
 
-#content .beach-background .text {
+#content .background .text {
   position: absolute;
   top: 8%;
   left: 0;
   right: 0;
 }
 
-#content .beach-background .text h1 {
+#content .background .text h1 {
   font-family: 'Times New Roman', sans-serif;
   font-weight: 400;
   font-size: 6em;
@@ -196,54 +194,55 @@ h1, h2, h3, h4, h5 {
   line-height: inherit;
 }
 
-#content .beach-background .text h2 {
+#content .background .text h2 {
   font-weight: 500;
   font-size: 1.8em;
   line-height: inherit;
 }
 
-#content .beach-background .text h3 {
+#content .background .text h3 {
   font-weight: 400;
   font-size: 1.8em;
   line-height: inherit;
 }
 
-#content .beach-background .countdown {
+#content .background .countdown {
   position: absolute;
   bottom: 8%;
   left: 0;
   right: 0;
 }
 
-#content .beach-background .countdown table {
+#content .background .countdown table {
   display: inline-block;
   width: unset;
 }
 
-#content .beach-background .countdown td {
+#content .background .countdown td {
   font-weight: 400;
   font-size: 2.5em;
   text-align: center;
   width: 3.8em;
 }
 
-#login-content .beach-background {
+#login-content .background {
   height: 100%;
+  background: #E5C215;
 }
 
-#login-content .beach-background .card {
+#login-content .background .card {
   width: 20%;
   display: inline-block;
 }
 
-#login-content .beach-background h1 {
+#login-content .background h1 {
   color: white;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
   margin: 0;
   padding: 2.8% 0;
 }
 
-#login-content .beach-background h1 {
+#login-content .background h1 {
   font-family: 'Times New Roman', sans-serif;
   font-weight: 400;
   font-size: 6em;
