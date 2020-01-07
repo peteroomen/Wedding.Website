@@ -1,10 +1,20 @@
+@font-face {
+    font-family: Sunflower;
+    src: url("/fonts/sunflower.otf") format("opentype");
+}
+
+@font-face {
+    font-family: StrawberryBlossom;
+    src: url("/fonts/strawberry-blossom.otf") format("opentype");
+}
+
 body {
   padding: 0;
   margin: 0;
 }
 
 body * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Century Gothic', sans-serif;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -37,7 +47,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .bold {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .small-margin-left {
@@ -88,7 +98,7 @@ h1, h2, h3, h4, h5 {
 #header-bar .logo-bar h1 {
   padding: 0;
   margin: 0;
-  font-family: 'Times New Roman', sans-serif;
+  font-family: 'StrawberryBlossom';
   font-weight: 400;
   font-size: 64px;
   color: white;
@@ -162,9 +172,7 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background {
-  background-image: url('/img/bg.jpg');
-  background-size: cover;
-  background-position: center;
+  background: #F1F1F2;
   
   height: 100%;
   box-sizing: border-box;
@@ -173,10 +181,14 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background * {
+  font-family: 'Sunflower';
   margin: 0;
   padding: 0;
-  color: white;
-  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
+  color: rgba(0,0,0,0.87);
+}
+
+#content .background tr {
+  border-bottom: none;
 }
 
 #content .background .text {
@@ -187,11 +199,14 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background .text h1 {
-  font-family: 'Times New Roman', sans-serif;
+  font-family: 'StrawberryBlossom';
   font-weight: 400;
+  color: #E5C215;
   font-size: 6em;
-  padding-bottom: 12px;
-  line-height: inherit;
+}
+
+#content .background img.kiss {
+  width: 20%;
 }
 
 #content .background .text h2 {
@@ -220,14 +235,14 @@ h1, h2, h3, h4, h5 {
 
 #content .background .countdown td {
   font-weight: 400;
-  font-size: 2.5em;
+  font-size: 2em;
   text-align: center;
   width: 3.8em;
 }
 
 #login-content .background {
+  background: #F1F1F2;
   height: 100%;
-  background: #E5C215;
 }
 
 #login-content .background .card {
@@ -235,17 +250,17 @@ h1, h2, h3, h4, h5 {
   display: inline-block;
 }
 
-#login-content .background h1 {
-  color: white;
-  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
-  margin: 0;
-  padding: 2.8% 0;
+#login-content .background img.kiss {
+  width: 18%;
 }
 
 #login-content .background h1 {
-  font-family: 'Times New Roman', sans-serif;
+  color: #E5C215;
+  margin: 0;
+  padding-bottom: 1%;
+  font-family: 'StrawberryBlossom';
   font-weight: 400;
-  font-size: 6em;
+  font-size: 5em;
 }
 
 .map-container {
@@ -276,32 +291,35 @@ h1, h2, h3, h4, h5 {
   color: white;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Sunflower';
+}
 
 /* Input colors */
 /* label focus color */
 input[type=text]:focus + label {
-  color: #00b0ff !important;
+  color: #E5C215 !important;
 }
 
 /* label underline focus color */
 input[type=text]:focus {
-  border-bottom: 1px solid #00b0ff !important;
-  box-shadow: 0 1px 0 0 #00b0ff !important;
+  border-bottom: 1px solid #E5C215 !important;
+  box-shadow: 0 1px 0 0 #E5C215 !important;
 }
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
-     border: 2px solid #00b0ff !important;
-     background-color: #00b0ff !important;
+     border: 2px solid #E5C215 !important;
+     background-color: #E5C215 !important;
 }
 
 /* icon prefix focus color */
 .input-field .prefix.active {
-  color: #00b0ff !important;
+  color: #E5C215 !important;
 }
 
 /* button colour */
 .btn-floating[purchased] {
-  background-color: #00b0ff !important;
+  background-color: #E5C215 !important;
 }
 
 .btn-floating:hover i {
@@ -311,13 +329,9 @@ input[type=text]:focus {
 .material-tooltip .tooltip-content {
   color: white;
 }
-/*
-.card .card-content .fixed-height {
-  height: 72px;
-  overflow: auto;
-}
 
-.card .card-image img {
-  height: 404.16px;
+button.btn.light-blue.accent-3 {
+  background-color: #E5C215 !important;
+  color: rgba(0,0,0,0.87) !important;
+  font-weight: 500;
 }
-*/
