@@ -31,6 +31,12 @@ User = sequelize.define('user', {
   },
   isAdmin: {
     type: Sequelize.BOOLEAN
+  },
+  message: {
+    type: Sequelize.STRING
+  },
+  isCeremonyOnly: {
+    type: Sequelize.BOOLEAN
   }
 });
 
@@ -87,7 +93,7 @@ init = function () {
     });
 
   // force: true will drop the table if it already exists
-  sequelize.sync().then(() => {
+  sequelize.sync({ force: true }).then(() => {
     // Check if the admin user exists
 
     // Create admin user

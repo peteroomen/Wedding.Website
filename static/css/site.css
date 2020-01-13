@@ -8,13 +8,15 @@
     src: url("/fonts/strawberry-blossom.otf") format("opentype");
 }
 
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+
 body {
   padding: 0;
   margin: 0;
 }
 
 body * {
-  font-family: 'Century Gothic', sans-serif;
+  font-family: 'Didact Gothic',sans-serif;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -181,7 +183,8 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background * {
-  font-family: 'Sunflower';
+  font-family: 'Didact Gothic',sans-serif;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   color: rgba(0,0,0,0.87);
@@ -199,7 +202,7 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background .text h1 {
-  font-family: 'StrawberryBlossom';
+  font-family: 'Sunflower';
   font-weight: 400;
   color: #E5C215;
   font-size: 6em;
@@ -210,13 +213,11 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background .text h2 {
-  font-weight: 500;
   font-size: 1.8em;
   line-height: inherit;
 }
 
 #content .background .text h3 {
-  font-weight: 400;
   font-size: 1.8em;
   line-height: inherit;
 }
@@ -234,10 +235,46 @@ h1, h2, h3, h4, h5 {
 }
 
 #content .background .countdown td {
-  font-weight: 400;
   font-size: 2em;
   text-align: center;
   width: 3.8em;
+  color: #E5C215;
+}
+
+@media (max-width: 1200px) {
+  #content .background .text h1 {
+    font-size: 4em;
+  }
+
+  #content .background img.kiss {
+    width: 16%;
+  }
+
+  #content .background .countdown td {
+    font-size: 1.8em;
+  }
+}
+
+@media (orientation: portrait) {
+  #content .background .text h1 {
+    font-size: 6em;
+  }
+
+  #content .background .text h2 {
+    font-size: 2.4em;
+  }
+
+  #content .background .text h3 {
+    font-size: 2.4em;
+  }
+
+  #content .background img.kiss {
+    width: 50%;
+  }
+
+  #content .background .countdown td {
+    font-size: 2.4em;
+  }
 }
 
 #login-content .background {
@@ -285,6 +322,11 @@ h1, h2, h3, h4, h5 {
 #info-content table tr td {
   padding: 8px;
   vertical-align: text-top;
+}
+
+.polaroids img {
+  width: 25%;
+  margin: 32px;
 }
 
 .material-tooltip .tooltip-content {

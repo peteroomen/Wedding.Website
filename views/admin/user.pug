@@ -14,10 +14,17 @@ block content
         div(class="input-field col s5") 
           input(name="password" type="text" value=password)
           label Password
+        div(class="input-field col s5") 
+          input(name="message" type="text" value=user.message)
+          label Personal Message
         div(class="input-field col s2")
           label
             input(id="admin" name="isAdmin" class="filled-in" type="checkbox" checked=user.isAdmin)
             span Is Admin
+        div(class="input-field col s2")
+          label
+            input(id="ceremonyOnly" name="isCeremonyOnly" class="filled-in" type="checkbox" checked=user.isCeremonyOnly)
+            span Is Ceremony Only
       div#user-list(class="section ")
         h5 Guests
         each guest, i in user.guests

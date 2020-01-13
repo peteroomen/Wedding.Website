@@ -10,14 +10,18 @@ block content
       tr
         th Username
         th Guests
+        th Personal Message
         th Is Admin
+        th Is Ceremony Only
         th
 
       each user in users
         tr
           td= user.username
           td= user.guests.length > 0 ? user.guests.map((guest) => guest.firstName + ' ' + guest.lastName).join(', ') : 'This user has no guests'
+          td= user.message
           td= user.isAdmin ? 'Yes' : 'No'
+          td= user.isCeremonyOnly ? 'Yes' : 'No'
           td
             a(href="/admin/users/" + user.id + "/delete" class="btn-flat waves-effect btn-floating right small-margin-left")
               i(class="material-icons dark-text") delete

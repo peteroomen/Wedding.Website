@@ -80,7 +80,9 @@ app.post('/rsvp', (req, res) => {
     var user = {
       id: currentUser.userId,
       username: currentUser.username,
+      message: currentUser.message,
       isAdmin: currentUser.isAdmin,
+      isCeremonyOnly: currentUser.isCeremonyOnly,
       guests: (req.body.guests || []).map((guest) => {
         return {
           firstName: guest.firstName,
@@ -186,7 +188,9 @@ app.post('/admin/users/save', (req, res) => {
     var user = {
       id: req.body.id,
       username: req.body.username,
+      message: req.body.message,
       isAdmin: req.body.isAdmin != undefined,
+      isCeremonyOnly: req.body.isCeremonyOnly != undefined,
       guests: (req.body.guests || []).map((guest) => {
         return {
           firstName: guest.firstName,
