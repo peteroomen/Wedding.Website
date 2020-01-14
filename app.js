@@ -62,6 +62,19 @@ app.get('/story', (req, res) => {
   });
 });
 
+app.get('/invite', (req, res) => {
+  authentication.requireAuth(req, res, (currentUser) => {
+    var status = req.query.status || '';
+    database.getUser(currentUser.userId).then((user) => {
+      console.log("Invite for user:", user);
+      res.render('invite', { page: 'invite', currentUser: currentUser, user: user });
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/');
+    });
+  });
+});
+
 app.get('/rsvp', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
     var status = req.query.status || '';

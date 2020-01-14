@@ -293,7 +293,7 @@ h1, h2, h3, h4, h5 {
   color: #E5C215;
   margin: 0;
   padding-bottom: 1%;
-  font-family: 'StrawberryBlossom';
+  font-family: 'Sunflower';
   font-weight: 400;
   font-size: 5em;
 }
@@ -325,6 +325,25 @@ h1, h2, h3, h4, h5 {
 .polaroids img {
   width: 25%;
   margin: 32px;
+}
+
+#invite-content h1.invite-heading {
+  color: #E5C215;
+  font-family: 'Sunflower';
+  font-weight: 400;
+  font-size: 4.8em;
+  margin: 0;
+}
+
+#invite-content h3.invite-subheading {
+  font-family: 'Didact Gothic', sans-serif;
+  font-weight: 400;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+#invite-content video.invite-vid {
+  width: 60%;
 }
 
 .material-tooltip .tooltip-content {

@@ -1,0 +1,19 @@
+html
+  head
+    include includes/head.pug
+
+  body
+    div(id="invite-content")
+      div(class="background center-align")
+        br
+        br
+        h1(class="invite-heading") You are invited
+        h3(class="invite-subheading") Maybe another message here?
+        br
+        video(id="vid" class="invite-vid" controls)
+          source(src=user.isCeremonyOnly ? "vid/invite.mp4" : "vid/invite-with-reception.mp4" type="video/mp4")
+        br
+        br
+        div(class="row")
+          a(href="/rsvp")
+            button(type="submit" class="waves-effect waves-light btn light-blue accent-3") Click to RSVP
