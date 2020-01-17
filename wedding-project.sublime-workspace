@@ -98,28 +98,53 @@
 			}
 		},
 		{
+			"file": "views/info.pug",
+			"settings":
+			{
+				"buffer_size": 1016,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/rsvp.pug",
+			"settings":
+			{
+				"buffer_size": 2078,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "database.js",
+			"settings":
+			{
+				"buffer_size": 7562,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "static/css/site.css",
 			"settings":
 			{
-				"buffer_size": 7425,
+				"buffer_size": 7746,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "views/login.pug",
+			"file": "views/invite.pug",
 			"settings":
 			{
-				"buffer_size": 967,
+				"buffer_size": 614,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "extends shared/layout.pug"
 			}
 		},
 		{
-			"file": "views/home.pug",
+			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 462,
+				"buffer_size": 9908,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -171,6 +196,12 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Peter/Documents/Wedding.Website/views/login.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
+		"/C/Users/Peter/Documents/Wedding.Website/views/home.pug",
+		"/C/Users/Peter/Downloads/M5 configuration V1 (1).json",
+		"/C/Users/Peter/Downloads/New Upload to M5 CSV (1).csv",
+		"/C/Users/Peter/AppData/Local/Temp/fz3temp-2/version_check.php",
 		"/C/Users/Peter/Documents/Wedding.Website/app.js",
 		"/C/Users/Peter/Documents/Wedding.Website/views/admin/user.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/admin/users.pug",
@@ -178,10 +209,7 @@
 		"/C/Users/Peter/Documents/Wedding.Website/static/css/home.css",
 		"/C/Users/Peter/Documents/Wedding.Website/views/includes/head.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/static/css/site.css",
-		"/C/Users/Peter/Documents/Wedding.Website/views/home.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/views/info.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/views/rsvp.pug",
-		"/C/Users/Peter/Documents/Wedding.Website/views/login.pug",
 		"/C/Users/Peter/Documents/Wedding.Website/todo",
 		"/C/Users/Peter/Downloads/M5 configuration V1.json",
 		"/C/Users/Peter/Documents/Wedding.Website/views/registry.pug",
@@ -284,6 +312,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Enter the details from your wedding invitation\n\nUsername and password are case-sensitive",
+			"Malcolm Chiles",
 			"font-family: 'Didact Gothic',sans-serif;",
 			"'Didact Gothic',san-serif",
 			"'CenturyGothic';",
@@ -419,7 +449,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -435,8 +465,8 @@
 						"selection":
 						[
 							[
-								672,
-								672
+								795,
+								79
 							]
 						],
 						"settings":
@@ -447,7 +477,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -476,24 +506,114 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "static/css/site.css",
+					"file": "views/info.pug",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7425,
+						"buffer_size": 1016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								417,
-								417
+								262,
+								262
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/rsvp.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1603,
+								1607
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "database.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7562,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								728,
+								742
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "static/css/site.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7746,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4738,
+								4738
 							]
 						],
 						"settings":
@@ -503,68 +623,71 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 4130.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/invite.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 614,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								457,
+								457
+							]
+						],
+						"settings":
+						{
+							"auto_name": "extends shared/layout.pug",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2193,
+								2193
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "views/login.pug",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 967,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								218,
-								218
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/home.pug",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 462,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								449,
-								449
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]

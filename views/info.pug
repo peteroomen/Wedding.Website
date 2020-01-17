@@ -30,12 +30,13 @@ block content
         More info about games/hangout
       br
 
-      h4 Reception
-      p(class="bold") Time: 4:30 PM
-      p.
-        Info about reception goes here
-      p.
-        This was info about drinks
-      br
+      if !user.isCeremonyOnly
+        h4 Reception
+        p(class="bold") Time: 4:30 PM
+        p.
+          Info about reception goes here
+        p.
+          This was info about drinks
+        br
         
   script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFJCRO-WHsSqOuHA0tTZO2x-LeQuk0_UM&callback=initMaps")

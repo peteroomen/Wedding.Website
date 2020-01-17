@@ -52,7 +52,12 @@ app.get('/', (req, res) => {
 
 app.get('/info', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
-    res.render('info', { page: 'info', currentUser: currentUser  });
+    database.getUser(currentUser.userId).then((user) => {
+      res.render('info', { page: 'info', currentUser: currentUser, user: user });
+    }, (error) => {
+      console.error('error', error);
+      res.redirect('/');
+    });
   });
 });
 
@@ -64,7 +69,6 @@ app.get('/story', (req, res) => {
 
 app.get('/invite', (req, res) => {
   authentication.requireAuth(req, res, (currentUser) => {
-    var status = req.query.status || '';
     database.getUser(currentUser.userId).then((user) => {
       console.log("Invite for user:", user);
       res.render('invite', { page: 'invite', currentUser: currentUser, user: user });

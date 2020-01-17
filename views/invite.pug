@@ -8,7 +8,7 @@ html
         br
         br
         h1(class="invite-heading") You are invited
-        h3(class="invite-subheading") Maybe another message here?
+        h3(class="invite-subheading") #{user.message}
         br
         video(id="vid" class="invite-vid" controls)
           source(src=user.isCeremonyOnly ? "vid/invite.mp4" : "vid/invite-with-reception.mp4" type="video/mp4")

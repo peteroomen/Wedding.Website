@@ -93,7 +93,7 @@ init = function () {
     });
 
   // force: true will drop the table if it already exists
-  sequelize.sync({ force: true }).then(() => {
+  sequelize.sync({ force: false }).then(() => {
     // Check if the admin user exists
 
     // Create admin user
