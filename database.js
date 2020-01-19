@@ -33,7 +33,7 @@ User = sequelize.define('user', {
     type: Sequelize.BOOLEAN
   },
   message: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING(1000), 
   },
   isCeremonyOnly: {
     type: Sequelize.BOOLEAN
