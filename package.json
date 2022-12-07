@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
-    "express": "4.16.2",
+    "express": "4.17.3",
     "jsonwebtoken": "^8.2.1",
     "materialize-css": "^1.0.0-rc.1",
     "mysql2": "^1.5.3",
